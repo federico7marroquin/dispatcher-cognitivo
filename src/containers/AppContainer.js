@@ -1,13 +1,24 @@
-import React, { Component } from 'react';
-import DashboardContainer from './DashboardContainer';
-class App extends Component {
+import React from 'react';
+import MainContainer from './MainContainer';
+import Dashboard from '../components/Dashboard/Dashboard'
+import {useStyles} from '../styles/styles';
 
-
-    render() {
-        return (
-            <DashboardContainer />
-        );
-    }
+export default function App() {
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(true);
+    const handleDrawerOpen = () => {
+      setOpen(true);
+    };
+    const handleDrawerClose = () => {
+      setOpen(false);
+    };
+    
+    return (
+        <div className={classes.root}>
+            <Dashboard open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}/>
+            <MainContainer />
+        </div>
+    );
+    
 }
 
-export default App;
