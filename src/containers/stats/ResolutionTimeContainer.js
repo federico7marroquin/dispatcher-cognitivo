@@ -4,10 +4,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-import Chart from '../../components/Chart/Chart';
-import PieTooltip from '../../components/PieChart/PieChartTooltip';
+import CustomTreeMap from '../../components/TreeMap/CustomTreeMap';
+
 import PieChart from '../../components/PieChart/PieChart';
-import Deposits from '../../components/Deposits/Deposits';
 import Orders from '../../components/Orders/Orders';
 import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/ResolutionStyles';
@@ -22,21 +21,21 @@ export default function ResolutionTime() {
             <Container maxWidth="lg" className={classes.container}>
                 <Grid container spacing={3}>
                     {/* Recent Deposits */}
-                    <Grid item xs={12} md={6} lg={6}>
+                    <Grid item xs={12} md={4} lg={4}>
                         <Paper className={fixedHeightPaper}>
                             <PieChart />
                         </Paper>
                     </Grid> 
                     {/* Recent Deposits */}
-                    <Grid item xs={12} md={6} lg={6}>
+                    <Grid item xs={12} md={8} lg={8}>
                         <Paper className={fixedHeightPaper}>
-                            <PieChart />
+                            <CustomTreeMap />
                         </Paper>
                     </Grid> 
                     {/* Recent Orders */}
                     <Grid item xs={12}>
                         <Paper className={classes.paper}>
-                            <Orders />
+                            <Orders title="Correos Filtrados" />
                         </Paper>
                     </Grid>
                 </Grid>

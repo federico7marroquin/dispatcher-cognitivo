@@ -16,12 +16,15 @@ const useStyles = makeStyles({
 
 export default function Deposits(props) {
   const classes = useStyles();
-  const { title, quantity, date } = props;
+  const { title, quantity, date, time } = props;
   return (
     <React.Fragment>
       <Title>{title? title: "Recent Deposits" }</Title>
       <Typography component="p" variant="h4">
       {quantity? quantity: "$3,024.00"}
+      </Typography>
+      <Typography color="textSecondary">
+        <strong>Promedio: { time? time: null}</strong>
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
         {date? date: "on 15 March, 2019"}

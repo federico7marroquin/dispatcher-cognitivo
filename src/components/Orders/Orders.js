@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Orders() {
+export default function Orders(props) {
   const classes = useStyles();
   const [show, setShow] = useState(true);
 
@@ -60,7 +60,7 @@ export default function Orders() {
   }
   return (
     <React.Fragment>
-      <Title>últimos Correos</Title>
+      <Title>{props.title? props.title :"últimos Correos" }</Title>
       <Table size="small">
         <TableHead>
           <TableRow>

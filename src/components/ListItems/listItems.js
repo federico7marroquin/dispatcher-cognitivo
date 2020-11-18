@@ -9,13 +9,13 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const color="#000000DE";
+const color = "#000000DE";
 
 export const mainListItems = (
   <div>
-    <Link to="/autoresolution"  style={{textDecoration: "none", color: color}}>
+    <Link to="/autoresolution" style={{ textDecoration: "none", color: color }}>
       <ListItem button>
         <ListItemIcon>
           <DashboardIcon />
@@ -23,7 +23,7 @@ export const mainListItems = (
         <ListItemText primary="Dashboard" />
       </ListItem>
     </Link>
-    <Link to="/escalation"   style={{textDecoration: "none", color:color}}>
+    <Link to="/escalation" style={{ textDecoration: "none", color: color }}>
       <ListItem button>
         <ListItemIcon>
           <ShoppingCartIcon />
@@ -31,19 +31,19 @@ export const mainListItems = (
         <ListItemText primary="Orders" />
       </ListItem>
     </Link>
-    <Link to="/resolutiontime"   style={{textDecoration: "none", color: color}}>
+    <Link to="/resolutiontime" style={{ textDecoration: "none", color: color }}>
       <ListItem button>
         <ListItemIcon>
-          <PeopleIcon />
+          <BarChartIcon />
         </ListItemIcon>
-        <ListItemText primary="Customers" />
+        <ListItemText primary="Reports" />
       </ListItem>
     </Link>
     <ListItem button>
       <ListItemIcon>
-        <BarChartIcon />
+        <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Customers" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

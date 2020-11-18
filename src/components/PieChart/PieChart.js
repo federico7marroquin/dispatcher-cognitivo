@@ -39,12 +39,12 @@ export default class EmailPieChart extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <Title>Tipo Respuestas</Title>
+        <Title>Resolución de peticiones</Title>
         <ResponsiveContainer>
           <PieChart width={400} height={400}>
             <Pie
               data={data}
-              cx={200}
+              cx={150}
               cy={150}
               labelLine={false}
               label={renderCustomizedLabel}
