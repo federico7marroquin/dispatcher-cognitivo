@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/DemoCorreos/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/DemoCorreos/static/js/main.8c4d00c0.chunk.js",
+    "main.js.map": "/DemoCorreos/static/js/main.8c4d00c0.chunk.js.map",
+    "runtime-main.js": "/DemoCorreos/static/js/runtime-main.7414efdb.js",
+    "runtime-main.js.map": "/DemoCorreos/static/js/runtime-main.7414efdb.js.map",
+    "static/js/2.7f31a998.chunk.js": "/DemoCorreos/static/js/2.7f31a998.chunk.js",
+    "static/js/2.7f31a998.chunk.js.map": "/DemoCorreos/static/js/2.7f31a998.chunk.js.map",
+    "static/js/3.3f202d56.chunk.js": "/DemoCorreos/static/js/3.3f202d56.chunk.js",
+    "static/js/3.3f202d56.chunk.js.map": "/DemoCorreos/static/js/3.3f202d56.chunk.js.map",
+    "index.html": "/DemoCorreos/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/DemoCorreos/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.7f31a998.chunk.js.LICENSE.txt": "/DemoCorreos/static/js/2.7f31a998.chunk.js.LICENSE.txt",
+    "static/media/Logo.7108187f.png": "/DemoCorreos/static/media/Logo.7108187f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7414efdb.js",
+    "static/js/2.7f31a998.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.8c4d00c0.chunk.js"
+  ]
+}
