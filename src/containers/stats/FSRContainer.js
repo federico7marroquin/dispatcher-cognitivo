@@ -22,7 +22,7 @@ export default function FirstLevelResolution() {
                     {/* Recent Deposits */}
                     <Grid item xs={12} md={4} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits />
+                            <Deposits title="Correos Recientes" date=" 17 de noviembre, 2020" quantity="3024" />
                         </Paper>
                     </Grid>
                     {/* Chart */}

@@ -14,20 +14,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+export default function Deposits(props) {
   const classes = useStyles();
+  const { title, quantity, date } = props;
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
+      <Title>{title? title: "Recent Deposits" }</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+      {quantity? quantity: "$3,024.00"}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+        {date? date: "on 15 March, 2019"}
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
+          Ver Balance
         </Link>
       </div>
     </React.Fragment>

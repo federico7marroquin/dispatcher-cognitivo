@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -13,41 +13,66 @@ function createData(id, date, name, shipTo, paymentMethod, amount) {
   return { id, date, name, shipTo, paymentMethod, amount };
 }
 
+
+
 const rows = [
-  createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-  createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
+  createData(0, '17 Nov, 2020', 'Elvis Presley', 'lonox30535@0335g.com', 'Personalización', 312.44),
+  createData(1, '16 Nov, 2020', 'Paul McCartney', 'lijeweddass-3517@yopmail.com', 'Escasez', 866.99),
+  createData(2, '16 Nov, 2020', 'Tom Scholz', 'rukkojekku@nedoz.com', 'Autoridad', 100.81),
+  createData(3, '16 Nov, 2020', 'Michael Jackson', 'virtozaydi@nedoz.com', 'Curiosidad', 654.39),
+  createData(4, '16 Nov, 2020', 'Bruce Springsteen', 'kaknocirde@nedoz.com', 'Utilidad', 212.79),
 ];
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+const moreRows = [
+  createData(0, '17 Nov, 2020', 'Elvis Presley', 'lonox30535@0335g.com', 'Personalización', 312.44),
+  createData(1, '16 Nov, 2020', 'Paul McCartney', 'lijeweddass-3517@yopmail.com', 'Escasez', 866.99),
+  createData(2, '16 Nov, 2020', 'Tom Scholz', 'rukkojekku@nedoz.com', 'Autoridad', 100.81),
+  createData(3, '16 Nov, 2020', 'Michael Jackson', 'virtozaydi@nedoz.com', 'Curiosidad', 654.39),
+  createData(4, '16 Nov, 2020', 'Bruce Springsteen', 'kaknocirde@nedoz.com', 'Utilidad', 212.79),
+  createData(5, '16 Nov, 2020', 'Elvis Presley', 'lonox30535@0335g.com', 'Números', 312.44),
+  createData(6, '16 Nov, 2020', 'Paul McCartney', 'lijeweddass-3517@yopmail.com', 'Prueba social', 866.99),
+  createData(7, '15 Nov, 2020', 'Tom Scholz', 'rukkojekku@nedoz.com', 'Urgencia', 100.81),
+  createData(8, '15 Nov, 2020', 'Michael Jackson', 'virtozaydi@nedoz.com', 'Reciprocidad', 654.39),
+  createData(9, '15 Nov, 2020', 'Bruce Springsteen', 'kaknocirde@nedoz.com', 'Relevancia', 212.79),
+];
+
+
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
+    marginRight: theme.spacing(3),
   },
+  row: {
+    display: "flex",
+  }
 }));
 
 export default function Orders() {
   const classes = useStyles();
+  const [show, setShow] = useState(true);
+
+  const preventDefault =() => {
+    setShow(!show);
+  }
+  const demo = (event) => {
+    event.preventDefault();
+  }
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>últimos Correos</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell>Fecha</TableCell>
+            <TableCell>Nombre</TableCell>
+            <TableCell>Correo Electrónico</TableCell>
+            <TableCell>Asunto</TableCell>
+            <TableCell align="right">Resolución/seg</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          { show ? (rows.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
@@ -55,13 +80,31 @@ export default function Orders() {
               <TableCell>{row.paymentMethod}</TableCell>
               <TableCell align="right">{row.amount}</TableCell>
             </TableRow>
-          ))}
+          )) )
+          :
+          (moreRows.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell>{row.date}</TableCell>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.shipTo}</TableCell>
+              <TableCell>{row.paymentMethod}</TableCell>
+              <TableCell align="right">{row.amount}</TableCell>
+            </TableRow>
+          )) )
+          }
         </TableBody>
       </Table>
-      <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
-        </Link>
+      <div className={classes.row}>
+        <div className={classes.seeMore}>
+          <Link color="primary" href="#" onClick={preventDefault}>
+          { show ? "Ver más correos": "Ver menos correos"}
+          </Link>
+        </div>
+        <div className={classes.seeMore}>
+          <Link color="primary" href="#" onClick={demo}>
+            Descargar correos
+          </Link>
+        </div>
       </div>
     </React.Fragment>
   );
