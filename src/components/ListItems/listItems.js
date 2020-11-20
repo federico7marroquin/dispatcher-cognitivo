@@ -15,7 +15,7 @@ const color = "#000000DE";
 
 export const mainListItems = (
   <div>
-    <Link to="/autoresolution" style={{ textDecoration: "none", color: color }}>
+    <Link to="/" style={{ textDecoration: "none", color: color }}>
       <ListItem button>
         <ListItemIcon>
           <DashboardIcon />
@@ -28,29 +28,33 @@ export const mainListItems = (
         <ListItemIcon>
           <ShoppingCartIcon />
         </ListItemIcon>
-        <ListItemText primary="Orders" />
+        <ListItemText primary="Escalamiento" />
+      </ListItem>
+    </Link>
+    <Link to="/tmo" style={{ textDecoration: "none", color: color }}>
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="TMO" />
       </ListItem>
     </Link>
     <Link to="/resolutiontime" style={{ textDecoration: "none", color: color }}>
       <ListItem button>
         <ListItemIcon>
-          <BarChartIcon />
+          <PeopleIcon />
         </ListItemIcon>
-        <ListItemText primary="Reports" />
+        <ListItemText primary="Tipologías" />
       </ListItem>
     </Link>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItem>
+    <Link to="/autoresolution" style={{ textDecoration: "none", color: color }}>
+      <ListItem button>
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Otros" />
+      </ListItem>
+    </Link>
   </div>
 );
 

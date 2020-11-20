@@ -9,11 +9,11 @@ import CustomTreeMap from '../../components/TreeMap/CustomTreeMap';
 import PieChart from '../../components/PieChart/PieChart';
 import Orders from '../../components/Orders/Orders';
 import Copyright from '../../components/Copyright/Copyright';
-import {useStyles} from '../../styles/ResolutionStyles';
+import {useStyles} from '../../styles/styles';
 
 export default function ResolutionTime() {
     const classes = useStyles();
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.rechartswrapper);
+    const fixedHeightPaper = clsx(classes.paper, classes.fixedLargeHeight, classes.rechartswrapper);
 
     return (
         <main className={classes.content}>
@@ -23,7 +23,7 @@ export default function ResolutionTime() {
                     {/* Recent Deposits */}
                     <Grid item xs={12} md={4} lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <PieChart />
+                            <PieChart radius={130} height={20} width={40}/>
                         </Paper>
                     </Grid> 
                     {/* Recent Deposits */}

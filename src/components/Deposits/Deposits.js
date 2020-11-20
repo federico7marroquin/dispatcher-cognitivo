@@ -31,7 +31,7 @@ export default function Deposits(props) {
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          Ver Balance
+        Ver Detalles
         </Link>
       </div>
     </React.Fragment>

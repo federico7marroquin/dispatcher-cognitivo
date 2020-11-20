@@ -20,12 +20,12 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
+export default function Chart(props) {
   const theme = useTheme();
-
+  const {title} = props;
   return (
     <React.Fragment>
-      <Title>Hoy</Title>
+      <Title>{title? title:"Hoy"}</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}

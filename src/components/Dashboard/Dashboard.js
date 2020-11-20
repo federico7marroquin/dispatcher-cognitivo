@@ -15,7 +15,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../ListItems/listItems';
 import Logo from '../../assets/images/Logo.png';
-//import {useStyles} from '../../styles/styles';
 
 
 
@@ -116,7 +115,7 @@ export default function Dashboard(props) {
           </IconButton>
           <img alt="logo" src={Logo} width="45.5" height="42" />
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard Email Demo
+            Dispatcher Cognitivo
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={6} color="secondary">

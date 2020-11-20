@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Treemap } from 'recharts';
+import { Treemap, ResponsiveContainer } from 'recharts';
 import Title from '../Title/Title';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
@@ -142,7 +142,7 @@ const COLORS = ['#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D'
 class CustomizedContent extends PureComponent {
   render() {
     const {
-      root, depth, x, y, width, height, index, payload, colors, rank, name,
+      root, depth, x, y, width, height, index, colors, name,
     } = this.props;
 
     return (
@@ -207,22 +207,23 @@ export default function Example () {
   
     return (
         <React.Fragment>
-        <Title>Asuntos</Title>
-        <Treemap
-            className={classes.depositContext}
-            width={700}
-            height={300}
-            data={data}
-            dataKey="size"
-            ratio={4 / 3}
-            stroke="#fff"
-            fill="#8884d8"
-            content={<CustomizedContent colors={COLORS}
-            label />}
-        />
+        <Title>Tipologías Gestionadas</Title>
+        <ResponsiveContainer >
+          <Treemap
+              className={classes.depositContext}
+              
+              data={data}
+              dataKey="size"
+              ratio={4 / 3}
+              stroke="#fff"
+              fill="#8884d8"
+              content={<CustomizedContent colors={COLORS}
+              label />}
+          />
+        </ResponsiveContainer>
         <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          Ver Balance
+        Ver Detalles
         </Link>
       </div>
         </React.Fragment>

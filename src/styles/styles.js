@@ -24,4 +24,14 @@ export  const useStyles = makeStyles((theme) => ({
     fixedHeight: {
       height: 240,
     },
+    fixedMediumHeight: {
+      height: 300,
+    },
+
+    fixedLargeHeight: {
+      height: 400,
+    },
+    rechartswrapper: {
+        margin :" 0 auto"
+      }
   }));
