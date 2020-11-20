@@ -45,25 +45,26 @@ export default class Example extends PureComponent {
     return (
         <React.Fragment>
             <Title>Histórico mes</Title>
-            
-            <BarChart
-                width={1100}
-                height={350}
-                data={data}
-                margin={{
-                top: 5, right: 20, left: 10, bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
-                <ReferenceLine y={0} stroke="#000" />
-                <Brush dataKey="name" height={30} stroke="#8884d8" />
-                <Bar name="Resolución en primer nivel" dataKey="pv" fill="#8884d8" />
-                <Bar name="Escalamiento" dataKey="uv" fill="#82ca9d" />
-            </BarChart>
+            <ResponsiveContainer >
+              <BarChart
+                  width={1100}
+                  height={350}
+                  data={data}
+                  margin={{
+                    top: 5, right: 10, left: 10, bottom: 5,
+                  }}
+                  >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
+                  <ReferenceLine y={0} stroke="#000" />
+                  <Brush dataKey="name" height={30} stroke="#8884d8" />
+                  <Bar name="Resolución en primer nivel" dataKey="pv" fill="#8884d8" />
+                  <Bar name="Escalamiento" dataKey="uv" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
         </React.Fragment>
     );
   }

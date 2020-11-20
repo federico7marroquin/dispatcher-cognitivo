@@ -12,6 +12,7 @@ import {useStyles} from '../../styles/styles';
 export default function Escalation() {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const fixedLargeHeightPaper = clsx(classes.paper, classes.fixedLargeHeight);
 
     return (
         <main className={classes.content}>
@@ -38,7 +39,7 @@ export default function Escalation() {
                     </Grid>
                    {/* Recent Orders */}
                    <Grid item xs={12}>
-                        <Paper className={classes.paper}>
+                        <Paper className={fixedLargeHeightPaper}>
                             <BrushBarChart />
                         </Paper>
                     </Grid>
