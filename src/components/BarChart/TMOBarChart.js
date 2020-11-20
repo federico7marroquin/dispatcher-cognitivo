@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import Title from '../Title/Title';
 const data = [
@@ -35,7 +35,7 @@ export default class Example extends PureComponent {
             <Title>{this.props.title? this.props.title:"Hoy"}</Title>
             <ResponsiveContainer>
                 <BarChart
-                    
+
                     data={data}
                     margin={{
                         top: 5, right: 30, left: 20, bottom: 5,

@@ -54,7 +54,7 @@ export default function EmailPieChart(props) {
               data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
             }
           </Pie>
-          <Tooltip/>
+          <Tooltip />
         </PieChart>
       </ResponsiveContainer>
 
