@@ -13,7 +13,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from '../ListItems/listItems';
+import { mainListItems, secondaryListItems, tertiaryListItems } from '../ListItems/listItems';
 import Logo from '../../assets/images/Logo.png';
 
 
@@ -94,6 +94,13 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  fixedBottom:{
+    position: "absolute",
+    width: "100%",
+    bottom: 0,
+    paddingBottom:"1.5em",
+    border: "1px sold green",
+    }
 }));
 
 export default function Dashboard(props) {
@@ -141,6 +148,7 @@ export default function Dashboard(props) {
         <List>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
+        <List className={classes.fixedBottom}>{tertiaryListItems}</List>
       </Drawer>
     </>
   );

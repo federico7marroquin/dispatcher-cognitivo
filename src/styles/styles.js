@@ -20,7 +20,11 @@ export  const useStyles = makeStyles((theme) => ({
       display: 'flex',
       overflow: 'hidden',
       flexDirection: 'column',
+      '&:hover': {
+        background: theme.palette.background.default,
+     }
     },
+    
     fixedHeight: {
       height: 240,
     },
@@ -33,5 +37,8 @@ export  const useStyles = makeStyles((theme) => ({
     },
     rechartswrapper: {
         margin :" 0 auto"
-      }
+      },
+    linkDecorator: {
+      textDecoration: "none" 
+    }
   }));

@@ -9,6 +9,9 @@ export  const useStyles = makeStyles((theme) => ({
     container: {
      justifyContent: "center",
      alignItems: "center"
+    },
+    linkDecoration: {
+      textDecoration: "none"
     }
     
   }));

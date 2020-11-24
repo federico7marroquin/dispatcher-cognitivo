@@ -4,6 +4,7 @@ import {
 } from 'recharts';
 import Title from '../Title/Title';
 import Link from '@material-ui/core/Link';
+import { Link as Li} from "react-router-dom";
 import { useStyles } from './PieStyles';
 
 const data = [
@@ -36,6 +37,7 @@ function preventDefault(event) {
 
 export default function EmailPieChart(props) {
   const classes = useStyles();
+  const { route } = props;
   return (
     <React.Fragment>
       <Title>Resolución de peticiones</Title>
@@ -57,12 +59,15 @@ export default function EmailPieChart(props) {
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
-
+      { route && 
       <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          Ver Detalles
-      </Link>
-      </div>
+        <Li to={route} className={classes.linkDecoration}>
+          <Link color="primary"  >
+            Ver Detalles
+          </Link>
+        </Li>
+      </div> }
+      
     </React.Fragment>
   );
 }

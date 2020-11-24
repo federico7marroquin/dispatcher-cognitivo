@@ -10,10 +10,10 @@ import Orders from '../../components/Orders/Orders';
 import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/styles';
 
-export default function FirstLevelResolution() {
+export default function FirstLevelResolution(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
+    const {data} = props;
     return (
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
@@ -28,7 +28,7 @@ export default function FirstLevelResolution() {
                     {/* Chart */}
                     <Grid item xs={12} md={8} lg={9}>
                         <Paper className={fixedHeightPaper}>
-                            <Chart />
+                            <Chart data={data}/>
                         </Paper>
                     </Grid>
                     {/* Recent Orders */}

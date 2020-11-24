@@ -4,12 +4,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PieChartIcon from '@material-ui/icons/PieChart';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
+import PersonIcon from '@material-ui/icons/Person';
 import { Link } from "react-router-dom";
 
 const color = "#000000DE";
@@ -80,5 +81,18 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Year-end sale" />
     </ListItem>
+  </div>
+);
+
+export const tertiaryListItems = (
+  <div>
+    <Link to="/configuration" style={{ textDecoration: "none", color: color }}>
+      <ListItem button>
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="Configuración" />
+      </ListItem>
+    </Link>
   </div>
 );

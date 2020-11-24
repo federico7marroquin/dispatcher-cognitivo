@@ -10,10 +10,11 @@ import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/styles';
 import TMOBarChart from '../../components/BarChart/TMOBarChart';
 
-export default function TMO() {
+export default function TMO(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     const fixedLargeHeightPaper = clsx(classes.paper, classes.fixedLargeHeight);
+    const {data} = props;
     return (
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
@@ -34,13 +35,13 @@ export default function TMO() {
                      {/* Recent Deposits */}
                      <Grid item xs={12} md={4} lg={4}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits title="Correos Totales" date=" Noviembre 2020" quantity="3024" time="1 Hora con 15 minutos"/>
+                            <Deposits title="Correos Totales" date=" Noviembre 2020" quantity="3024" time="1 Hora con 15 minutos y 35 segundos"/>
                         </Paper>
                     </Grid>
                    {/* Recent Orders */}
                    <Grid item xs={12}>
                         <Paper className={fixedLargeHeightPaper}>
-                            <TMOBarChart title="TMO x Tipo de Gestión" />
+                            <TMOBarChart title="TMO x Tipo de Gestión" data={data}/>
                         </Paper>
                     </Grid>
                 </Grid>
