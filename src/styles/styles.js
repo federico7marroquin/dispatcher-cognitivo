@@ -6,6 +6,7 @@ export  const useStyles = makeStyles((theme) => ({
       display: 'flex',
     }, 
     appBarSpacer: theme.mixins.toolbar,
+    
     content: {
       flexGrow: 1,
       height: '100vh',
@@ -34,6 +35,9 @@ export  const useStyles = makeStyles((theme) => ({
 
     fixedLargeHeight: {
       height: 400,
+    },
+    fixedTotalHeight: {
+      height: "100%",
     },
     rechartswrapper: {
         margin :" 0 auto"
