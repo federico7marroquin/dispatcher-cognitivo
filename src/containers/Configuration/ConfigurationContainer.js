@@ -16,7 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles'
 import { green, orange,  blue, red } from '@material-ui/core/colors';
 
-export const theme = createMuiTheme({
+//export const theme = createMuiTheme({
 //   typography: {
 //     body1: {
 //       fontFamily: "'Open Sans', sans-serif",
@@ -41,7 +41,7 @@ export const theme = createMuiTheme({
 //       contrastText: '#fff'
 //     }
 //   }
-})
+//})
 
 
 
