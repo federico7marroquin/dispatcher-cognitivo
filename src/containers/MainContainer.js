@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import FSR from './stats/FSRContainer';
 import Escalation from './stats/EscalationContainer';
 import ResolutionTime from './stats/ResolutionTimeContainer';
-import Configuration from './configuration/ConfigurationContainer'
+import ThemeContainer from './Theme/ThemeContainer'
 import TMO from './stats/TMOContainer';
 import Resume from './stats/ResumeContainer';
 import config from '../config/config.json'
@@ -180,7 +180,7 @@ export default function MainContainer() {
                 <ResolutionTime />
             </Route>
             <Route path="/configuration" >
-                <Configuration />
+                <ThemeContainer />
             </Route>
         </Switch>
     );

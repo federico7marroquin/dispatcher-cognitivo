@@ -62,7 +62,7 @@ const useCustmoStyles = makeStyles((theme) => ({
   
   }));
 
-export default function Configuration(props) {
+export default function ThemeContainer(props) {
     const classes = useStyles();
     const customClasses = useCustmoStyles();
 
