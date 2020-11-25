@@ -7,12 +7,14 @@ import Box from '@material-ui/core/Box';
 import Deposits from '../../components/Deposits/Deposits';
 import BrushBarChart from '../../components/BrushBarChart/BrushBarChart';
 import Copyright from '../../components/Copyright/Copyright';
+import MonthYearhDatePicker from '../../components/DatePicker/MonthYearDatePicker';
 import {useStyles} from '../../styles/styles';
 
 export default function Escalation(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     const fixedLargeHeightPaper = clsx(classes.paper, classes.fixedLargeHeight);
+    const fixedResponsiveHeightPaper = clsx(classes.paper, classes.fixedTotalHeight);
     const {data, fancyTimeFormat} = props;
 
     //state
@@ -141,9 +143,15 @@ export default function Escalation(props) {
                                 />
                         </Paper>
                     </Grid>
+                    {/* <Grid item xs={12} md={3} lg={3} >
+                        <Paper className={fixedResponsiveHeightPaper}>
+                            <MonthYearhDatePicker/>
+                        </Paper>
+                    </Grid> */}
                    {/* Recent Orders */}
                    <Grid item xs={12}>
                         <Paper className={fixedLargeHeightPaper}>
+                            <MonthYearhDatePicker/>
                             <BrushBarChart data={data} onChange={onChange}/>
                         </Paper>
                     </Grid>

@@ -20,7 +20,7 @@ export default class Example extends PureComponent {
 
     return (
         <React.Fragment>
-            <Title>Histórico mes</Title>
+            {/* <Title>Histórico mes</Title> */}
             <ResponsiveContainer >
               <BarChart
                   width={1100}
