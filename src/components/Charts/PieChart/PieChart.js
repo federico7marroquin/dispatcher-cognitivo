@@ -2,7 +2,7 @@ import React from 'react';
 import {
   PieChart, Pie, Cell, ResponsiveContainer, Tooltip
 } from 'recharts';
-import Title from '../Title/Title';
+import Title from '../../Title/Title';
 import Link from '@material-ui/core/Link';
 import { Link as Li} from "react-router-dom";
 import { useStyles } from './PieStyles';
@@ -62,9 +62,9 @@ export default function EmailPieChart(props) {
       { route && 
       <div>
         <Li to={route} className={classes.linkDecoration}>
-          <Link color="primary"  >
+          {/* <Link color="primary"  > */}
             Ver Detalles
-          </Link>
+          {/* </Link> */}
         </Li>
       </div> }
       

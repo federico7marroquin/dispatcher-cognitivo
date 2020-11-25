@@ -4,9 +4,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-import Chart from '../../components/Chart/Chart';
-import Deposits from '../../components/Deposits/Deposits';
-import Orders from '../../components/Orders/Orders';
+import Chart from '../../components/Charts/Chart/Chart';
+import Stats from '../../components/Stats/Stats';
+import Emails from '../../components/Emails/Emails';
 import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/styles';
 
@@ -22,7 +22,7 @@ export default function FirstLevelResolution(props) {
                     {/* Recent Deposits */}
                     <Grid item xs={12} md={4} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits title="Correos Recientes" date=" 17 de noviembre, 2020" quantity="3024" />
+                            <Stats title="Correos Recientes" date=" 17 de noviembre, 2020" quantity="3024" />
                         </Paper>
                     </Grid>
                     {/* Chart */}
@@ -34,7 +34,7 @@ export default function FirstLevelResolution(props) {
                     {/* Recent Orders */}
                     <Grid item xs={12}>
                         <Paper className={classes.paper}>
-                            <Orders />
+                            <Emails />
                         </Paper>
                     </Grid>
                 </Grid>

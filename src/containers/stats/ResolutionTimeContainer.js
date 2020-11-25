@@ -4,10 +4,10 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-import CustomTreeMap from '../../components/TreeMap/CustomTreeMap';
+import CustomTreeMap from '../../components/Charts/TreeMap/CustomTreeMap';
 
-import PieChart from '../../components/PieChart/PieChart';
-import Orders from '../../components/Orders/Orders';
+import PieChart from '../../components/Charts/PieChart/PieChart';
+import Emails from '../../components/Emails/Emails';
 import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/styles';
 
@@ -35,7 +35,7 @@ export default function ResolutionTime() {
                     {/* Recent Orders */}
                     <Grid item xs={12}>
                         <Paper className={classes.paper}>
-                            <Orders title="Correos Filtrados" />
+                            <Emails title="Correos Filtrados" />
                         </Paper>
                     </Grid>
                 </Grid>

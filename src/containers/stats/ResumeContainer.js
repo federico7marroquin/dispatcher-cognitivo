@@ -5,10 +5,10 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-import Chart from '../../components/Chart/Chart';
-import TMOBarChart from '../../components/BarChart/TMOBarChart';
-import Deposits from '../../components/Deposits/Deposits';
-import PieChart from '../../components/PieChart/PieChart';
+import Chart from '../../components/Charts/Chart/Chart';
+import TMOBarChart from '../../components/Charts/BarChart/TMOBarChart';
+import Stats from '../../components/Stats/Stats';
+import PieChart from '../../components/Charts/PieChart/PieChart';
 import Copyright from '../../components/Copyright/Copyright';
 import { useStyles } from '../../styles/styles';
 
@@ -26,7 +26,7 @@ export default function ResumeContainer(props) {
                     {/* Recent Deposits 2 */}
                     <Grid item xs={12} md={4} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits
+                            <Stats
                                 title="Correos Recientes"
                                 date={day}
                                 quantity={quantity}

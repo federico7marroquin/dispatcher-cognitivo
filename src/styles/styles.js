@@ -44,5 +44,12 @@ export  const useStyles = makeStyles((theme) => ({
       },
     linkDecorator: {
       textDecoration: "none" 
+    },
+    depositContext: {
+      flex: 1,
+    },
+    buttonMargin: {
+      marginTop: theme.spacing(4)
     }
+    
   }));

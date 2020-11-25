@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Treemap, ResponsiveContainer } from 'recharts';
-import Title from '../Title/Title';
+import Title from '../../Title/Title';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 

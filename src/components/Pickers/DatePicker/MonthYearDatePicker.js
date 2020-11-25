@@ -2,7 +2,8 @@ import React, { Fragment, useState } from "react";
 import { DatePicker, MuiPickersUtilsProvider  } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import {es} from 'date-fns/esm/locale'
-function InlineDatePickerDemo(props) {
+
+function MonthYearDatePicker(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
   const [startDate, setStarDate] = useState(new Date());
   const [ endDate, setEndDate] = useState(new Date());
@@ -24,4 +25,4 @@ function InlineDatePickerDemo(props) {
   );
 }
 
-export default InlineDatePickerDemo;
+export default MonthYearDatePicker;

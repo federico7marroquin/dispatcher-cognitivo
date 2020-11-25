@@ -39,7 +39,7 @@ const moreRows = [
 
 
 const useStyles = makeStyles((theme) => ({
-  seeMore: {
+  linksInRow: {
     marginTop: theme.spacing(3),
     marginRight: theme.spacing(3),
   },
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Orders(props) {
+export default function Emails(props) {
   const classes = useStyles();
   const [show, setShow] = useState(true);
 
@@ -95,12 +95,12 @@ export default function Orders(props) {
         </TableBody>
       </Table>
       <div className={classes.row}>
-        <div className={classes.seeMore}>
+        <div className={classes.linksInRow}>
           <Link color="primary" href="#" onClick={preventDefault}>
           { show ? "Ver más correos": "Ver menos correos"}
           </Link>
         </div>
-        <div className={classes.seeMore}>
+        <div className={classes.linksInRow}>
           <Link color="primary" href="#" onClick={demo}>
             Descargar correos
           </Link>

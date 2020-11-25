@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function Deposits(props) {
+export default function Stats(props) {
   const classes = useStyles();
   const { title, quantity, date, time, route } = props;
 
   return (
     <React.Fragment>
-      <Title>{title? title: "Recent Deposits" }</Title>
+      <Title>{title? title: "Estadísticas" }</Title>
       <Typography component="p" variant="h4">
       {quantity? quantity: "0"}
       </Typography>
@@ -39,11 +39,14 @@ export default function Deposits(props) {
         {date? date: "on 15 March, 2019"}
       </Typography>
       <div>
-        <Link to={route} className={`${classes.linkDecoration} MuiTypography-colorPrimary`}>
+        {
+          route &&<Link to={route} className={`${classes.linkDecoration} MuiTypography-colorPrimary`}>
           {/* <Link to={route} color="primary"  > */}
             Ver Detalles
           {/* </Link> */}
         </Link>
+        }
+        
       </div>
     </React.Fragment>
   );

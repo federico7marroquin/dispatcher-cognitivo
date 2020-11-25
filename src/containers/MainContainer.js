@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import FSR from './stats/FSRContainer';
 import Escalation from './stats/EscalationContainer';
 import ResolutionTime from './stats/ResolutionTimeContainer';
-import Configuration from './Configuration/ConfigurationContainer'
+import Configuration from './configuration/ConfigurationContainer'
 import TMO from './stats/TMOContainer';
 import Resume from './stats/ResumeContainer';
 import config from '../config/config.json'

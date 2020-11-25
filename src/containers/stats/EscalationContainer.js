@@ -4,10 +4,10 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-import Deposits from '../../components/Deposits/Deposits';
-import BrushBarChart from '../../components/BrushBarChart/BrushBarChart';
+import Stats from '../../components/Stats/Stats';
+import BrushBarChart from '../../components/Charts/BrushBarChart/BrushBarChart';
 import Copyright from '../../components/Copyright/Copyright';
-import MonthYearhDatePicker from '../../components/DatePicker/MonthYearDatePicker';
+import MonthYearhDatePicker from '../../components/Pickers/DatePicker/MonthYearDatePicker';
 import {useStyles} from '../../styles/styles';
 
 export default function Escalation(props) {
@@ -98,10 +98,10 @@ export default function Escalation(props) {
             <div className={classes.appBarSpacer} />
             <Container maxWidth="lg" className={classes.container}>
                 <Grid container spacing={3}>
-                    {/* Recent Deposits */}
+                    {/* Recent Stats */}
                     <Grid item xs={12} md={3} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits 
+                            <Stats 
                                 title="Primer Nivel" 
                                 date={date} 
                                 quantity={firstResolution} 
@@ -110,10 +110,10 @@ export default function Escalation(props) {
                                 />
                         </Paper>
                     </Grid>
-                     {/* Recent Deposits */}
+                     {/* Recent Stats */}
                      <Grid item xs={12} md={3} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits 
+                            <Stats 
                                 title="Escalados" 
                                 date={date} 
                                 quantity={scaled} 
@@ -121,10 +121,10 @@ export default function Escalation(props) {
                                 />
                         </Paper>
                     </Grid>
-                     {/* Recent Deposits */}
+                     {/* Recent Stats */}
                      <Grid item xs={12} md={3} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits 
+                            <Stats 
                                 title="Prioritarios" 
                                 date={date} 
                                 quantity={priorScaled}
@@ -132,10 +132,10 @@ export default function Escalation(props) {
                                 />
                         </Paper>
                     </Grid>
-                    {/* Recent Deposits */}
+                    {/* Recent Stats */}
                     <Grid item xs={12} md={3} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Deposits 
+                            <Stats 
                                 title="Correos Totales" 
                                 date={date} 
                                 quantity={totalEmails} 
