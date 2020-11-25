@@ -21,9 +21,9 @@ export  const useStyles = makeStyles((theme) => ({
       display: 'flex',
       overflow: 'hidden',
       flexDirection: 'column',
-      '&:hover': {
-        background: theme.palette.background.default,
-     }
+    //   '&:hover': {
+    //     background: theme.palette.background.default,
+    //  }
     },
     
     fixedHeight: {
@@ -49,7 +49,7 @@ export  const useStyles = makeStyles((theme) => ({
       flex: 1,
     },
     buttonMargin: {
-      marginTop: theme.spacing(4)
+      marginTop: theme.spacing(3)
     }
     
   }));

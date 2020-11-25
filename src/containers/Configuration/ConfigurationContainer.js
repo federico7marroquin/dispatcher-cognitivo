@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -11,16 +10,47 @@ import Logo from '../../assets/images/Logo.png'
 import ColorPicker from '../../components/Pickers/ColorPicker/ColorPicker';
 import ImagePicker from '../../components/Pickers/ImagePicker/ImagePicker';
 import SelectPicker from '../../components/Pickers/SelectPicker/SelectPicker';
-import Dialog from '../../components/Dialog/Dialog';
-import { ChromePicker, SwatchesPicker, SketchPicker, BlockPicker, TwitterPicker  } from 'react-color';
+import {  TwitterPicker  } from 'react-color';
 import { useStyles } from '../../styles/styles';
 import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles'
+import { green, orange,  blue, red } from '@material-ui/core/colors';
+
+export const theme = createMuiTheme({
+//   typography: {
+//     body1: {
+//       fontFamily: "'Open Sans', sans-serif",
+//       fontWeight: 400,
+//       fontSize: 16,
+//       color: blue[500] // color texto side bar
+//     }
+//   },
+
+//   palette: {
+//     primary: {
+  
+//       light: green[500],
+//       main: blue[500], //Color principal titulos y links
+//       dark: red[500],
+//       contrastText: '#fff'
+//     },
+//     secondary: {
+//       light: green[500],
+//       main: green[500],
+//       dark: orange[500],
+//       contrastText: '#fff'
+//     }
+//   }
+})
 
 
 
 const useCustmoStyles = makeStyles((theme) => ({
     depositContext: {
       flex: 1,
+    },
+    fixedGriddHeight: {
+        height: "15em"
     },
     colorPicker: {
       display: "none",
@@ -31,6 +61,7 @@ const useCustmoStyles = makeStyles((theme) => ({
     }
   
   }));
+
 export default function Configuration(props) {
     const classes = useStyles();
     const customClasses = useCustmoStyles();
@@ -52,21 +83,23 @@ export default function Configuration(props) {
     });
 
 
-    const open = (picker) => (event) => {
-        console.log('open: ' + picker);
-
-        setState({ ...state, [picker]: true });
-        return 'Predeterminado';
+    const handleToggle = (picker) => (event) => {
+        setState({ ...state, [picker]: !state[picker] });
     };
 
-    const handleClose = (picker, value) => (event) => {
-        console.log('handleClose: ' + state[picker] + 'value: '+ value);
-
-        setState({ ...state, [picker]: false });
-        setValue({ ...state, [picker]: value });
+    const handleChange = (picker) => (color,event) => 
+    {
+       setValue({ ...value, [picker]: color.hex });
 
     };
 
+    const changeTheme = () => {
+        console.log(theme.palette.primary.main);
+        console.log(value[2]);
+        theme.palette.primary.main = value[2];
+        console.log(theme.palette.primary.main);
+
+    }
 
     return (
         <main className={classes.content}>
@@ -83,46 +116,56 @@ export default function Configuration(props) {
                                         <ImagePicker title='Cargar Logo' img={Logo} />
                                     </Grid>
                                     
-                                    <Grid item xs={12} md={6} lg={4} >
-                                        <SelectPicker title='Cambiar fuente' />
-                                    </Grid>
-                                    <Grid item xs={12} md={6} lg={4} >
-                                        <ColorPicker title="Paleta de colores: primario" open={open(0)}/>
+                    
+                                    <Grid className={customClasses.fixedGriddHeight} item xs={12} md={6} lg={4} >
+                                        <ColorPicker title="Paleta de colores: primario" open={state[0]}  handleToggle={handleToggle(0)}/>
                                         <TwitterPicker 
+                                            color={ value[0] }
+                                            onChange={ handleChange(0) }
                                             className={clsx(customClasses.colorPicker, state[0] && customClasses.colorPickerOpen)}
                                             />
                                         
                                     </Grid>
-                                    <Grid item xs={12} md={6} lg={4} >
-                                        <ColorPicker title="Paleta de colores: secundario"  open={open(1)}/>
+                                    <Grid className={customClasses.fixedGriddHeight} item xs={12} md={6} lg={4} >
+                                        <ColorPicker title="Paleta de colores: secundario"  open={state[1]} handleToggle={handleToggle(1)}/>
                                         <TwitterPicker 
+                                            color={ value[1] }
+                                            onChange={ handleChange(1) }
                                              className={clsx(customClasses.colorPicker, state[1] && customClasses.colorPickerOpen)}
                                             />
                                        
                                     </Grid>
-                                    <Grid item xs={12} md={6} lg={4} className={classes.depositContext}>
-                                        <ColorPicker title="Color de texto título"  open={open(2)}/>
+                                    <Grid className={customClasses.fixedGriddHeight} item xs={12} md={6} lg={4}>
+                                        <ColorPicker title="Color de texto título"  open={state[2]} handleToggle={handleToggle(2)}/>
                                         <TwitterPicker
+                                            color={ value[2] }
+                                            onChange={ handleChange(2) }
                                              className={clsx(customClasses.colorPicker, state[2] && customClasses.colorPickerOpen)}
                                             />
 
                                     </Grid>
-                                    <Grid item xs={12} md={6} lg={4} >
-                                        <ColorPicker title="Color de texto primario"  open={open(3)}/>
+                                    <Grid className={customClasses.fixedGriddHeight} item xs={12} md={6} lg={4} >
+                                        <ColorPicker title="Color de texto primario" open={state[3]} handleToggle={handleToggle(3)}/>
                                         <TwitterPicker
+                                            color={ value[3] }
+                                            onChange={ handleChange(3) }
                                              className={clsx(customClasses.colorPicker, state[3] && customClasses.colorPickerOpen)}
                                             />
                                     
                                     </Grid>
-                                    <Grid item xs={12} md={6} lg={4} >
-                                        <ColorPicker title="Color de texto secundario"  open={open(4)}/>
+                                    <Grid className={customClasses.fixedGriddHeight} item xs={12} md={6} lg={4} >
+                                        <ColorPicker title="Color de texto secundario"  open={state[4]}  handleToggle={handleToggle(4)}/>
                                         <TwitterPicker 
+                                            color={ value[4] }
+                                            onChange={ handleChange(4) }
                                              className={clsx(customClasses.colorPicker, state[4] && customClasses.colorPickerOpen)}
                                             />
                                     </Grid>
-                                    
+                                    <Grid item xs={12} md={6} lg={4} >
+                                        <SelectPicker title='Cambiar fuente' />
+                                    </Grid>
                                     <Grid className= {classes.buttonMargin} item xs={12} md={12} lg={12}>
-                                        <Button  variant="contained" color="primary">
+                                        <Button onClick={changeTheme}  variant="contained" color="primary">
                                             Guardar cambios
                                         </Button>
                                     </Grid>

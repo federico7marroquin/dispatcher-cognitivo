@@ -21,22 +21,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ColorPicker(props) {
   const classes = useStyles();
-  const { title, open} = props;
-  const [ already, setAlready] = useState(false);
+  const { title, open, handleToggle} = props;
+
 
   const defaultOpen= (event) => {
     event.preventDefault();
-    open();
-    if(!already)
-      setAlready(true);
-    
+    handleToggle();
   }
   return (
     <React.Fragment>
       <Title>{title }</Title>
       <div className={classes.linksInRow}>
         <Link color="primary" href="#" onClick={defaultOpen}  > 
-            {already? "Cambiar a predeterminado" :"Elegir color"}
+            {open? "Ocultar" :"Elegir color"}
         </Link>
       </div>
     </React.Fragment>
