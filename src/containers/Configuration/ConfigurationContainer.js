@@ -93,13 +93,13 @@ export default function Configuration(props) {
 
     };
 
-    const changeTheme = () => {
-        console.log(theme.palette.primary.main);
-        console.log(value[2]);
-        theme.palette.primary.main = value[2];
-        console.log(theme.palette.primary.main);
+        // const changeTheme = () => {
+        //     console.log(theme.palette.primary.main);
+        //     console.log(value[2]);
+        //     theme.palette.primary.main = value[2];
+        //     console.log(theme.palette.primary.main);
 
-    }
+        // }
 
     return (
         <main className={classes.content}>
@@ -165,30 +165,22 @@ export default function Configuration(props) {
                                         <SelectPicker title='Cambiar fuente' />
                                     </Grid>
                                     <Grid className= {classes.buttonMargin} item xs={12} md={12} lg={12}>
-                                        <Button onClick={changeTheme}  variant="contained" color="primary">
+                                        <Button 
+                                        // onClick={changeTheme} 
+                                        variant="contained" 
+                                        color="primary">
                                             Guardar cambios
                                         </Button>
                                     </Grid>
                                 </Grid>
-
-
-
-                                
-
-
-
                             </Container>
-
                         </Paper>
                     </Grid>
-
                 </Grid>
                 <Box pt={4}>
                     <Copyright />
                 </Box>
             </Container>
-
-
         </main>
     );
 }
