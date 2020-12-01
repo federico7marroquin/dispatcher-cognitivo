@@ -10,8 +10,13 @@ export  const useStyles = makeStyles((theme) => ({
      justifyContent: "center",
      alignItems: "center"
     },
+    
     linkDecoration: {
-      textDecoration: "none"
+      textDecoration: "none",
+      '&:hover': {
+        textDecoration: "underline ",
+     }
+      
     }
     
   }));

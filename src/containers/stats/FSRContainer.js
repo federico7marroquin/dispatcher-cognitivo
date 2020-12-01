@@ -22,7 +22,7 @@ export default function FirstLevelResolution(props) {
                     {/* Recent Deposits */}
                     <Grid item xs={12} md={4} lg={3}>
                         <Paper className={fixedHeightPaper}>
-                            <Stats title="Correos Recientes" date=" 17 de noviembre, 2020" quantity="3024" />
+                            <Stats title="Correos Recientes" date=" 17 de noviembre, 2020" time ={'35 Minutos y 46 Segundos'} quantity="45" />
                         </Paper>
                     </Grid>
                     {/* Chart */}

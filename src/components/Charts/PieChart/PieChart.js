@@ -3,14 +3,13 @@ import {
   PieChart, Pie, Cell, ResponsiveContainer, Tooltip
 } from 'recharts';
 import Title from '../../Title/Title';
-import Link from '@material-ui/core/Link';
-import { Link as Li} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useStyles } from './PieStyles';
 
 const data = [
-  { name: 'Primer nivel', value: 700 },
-  { name: 'Escalados', value: 280 },
-  { name: 'Escalados con prioridad', value: 100 },
+  { name: 'Primer nivel', value: 7336 },
+  { name: 'Escalados', value: 3911 },
+  { name: 'Prioritarios', value: 3716 },
 
 ];
 
@@ -34,6 +33,7 @@ const renderCustomizedLabel = ({
 function preventDefault(event) {
   event.preventDefault();
 }
+
 
 export default function EmailPieChart(props) {
   const classes = useStyles();
@@ -61,11 +61,9 @@ export default function EmailPieChart(props) {
       </ResponsiveContainer>
       { route && 
       <div>
-        <Li to={route} className={classes.linkDecoration}>
-          {/* <Link color="primary"  > */}
+        <Link to={route} className={`${classes.linkDecoration} MuiTypography-colorPrimary`}>
             Ver Detalles
-          {/* </Link> */}
-        </Li>
+        </Link>
       </div> }
       
     </React.Fragment>

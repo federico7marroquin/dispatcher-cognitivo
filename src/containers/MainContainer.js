@@ -10,22 +10,13 @@ import config from '../config/config.json'
 
 const TMOData = [
     {
-        name: 'Tipo 1', uv: 4000, pv: 2400, amt: 2400,
+        name: 'Resolución en primer nivel', info: 5136, otros: 2200
     },
     {
-        name: 'Tipo 2', uv: 3000, pv: 1398, amt: 2210,
+        name: 'Escalados',  cert: 2933, auto: 977
     },
     {
-        name: 'Tipo 3', uv: 2000, pv: 9800, amt: 2290,
-    },
-    {
-        name: 'Tipo 4', uv: 2780, pv: 3908, amt: 2000,
-    },
-    {
-        name: 'Tipo 5', uv: 1890, pv: 4800, amt: 2181,
-    },
-    {
-        name: 'Tipo 6', uv: 2390, pv: 3800, amt: 2500,
+        name: 'Prioritarios',  pqrs: 2476, asun: 1238
     },
 
 ];
@@ -35,49 +26,49 @@ function createData(time, amount) {
 }
 
 const TodayData = [
-    createData('00:00', 0),
-    createData('03:00', 300),
-    createData('06:00', 600),
-    createData('09:00', 800),
-    createData('12:00', 1500),
-    createData('15:00', 2000),
-    createData('18:00', 2400),
-    createData('21:00', 2400),
-    createData('24:00', undefined),
+    createData('06:00', 0),
+    createData('06:20', 1),
+    createData('06:40', 2),
+    createData('07:00', 5),
+    createData('07:20', 8),
+    createData('07:40', 7),
+    createData('08:00', 9),
+    createData('08:20', 12),
+    createData('08:40', 10),
+    createData('09:00', undefined),
 ];
 
 const Escalationdata = [
-    { name: '1', uv: 300, pv: 456 , amt: 100, averagePv: 30, averageUv: 7200, averageAmt: 3600 },
-    { name: '2', uv: 145, pv: 230, amt: 200, averagePv: 20, averageUv: 5000, averageAmt: 2600 },
-    { name: '3', uv: 100, pv: 345, amt: 80 , averagePv: 10, averageUv: 7200, averageAmt: 3600},
-    { name: '4', uv: 8, pv: 450, amt: 100, averagePv: 30, averageUv: 1000, averageAmt: 3600 },
-    { name: '5', uv: 100, pv: 321, amt: 120, averagePv: 30, averageUv: 5000, averageAmt: 2600 },
-    { name: '6', uv: 9, pv: 235, amt: 6, averagePv: 60, averageUv: 7200, averageAmt: 3600 },
-    { name: '7', uv: 53, pv: 267, amt: 100, averagePv: 20, averageUv: 7200, averageAmt: 2600 },
-    { name: '8', uv: 252, pv: 378, amt: 100, averagePv: 30, averageUv: 5000, averageAmt: 3600 },
-    { name: '9', uv: 79, pv: 210, amt: 90, averagePv: 30, averageUv: 7200, averageAmt: 2600 },
-    { name: '10', uv: 294, pv: 23, amt: 10, averagePv: 20, averageUv: 7200, averageAmt: 3600 },
-    { name: '11', uv: 125, pv: 653, amt: 300, averagePv: 30, averageUv: 5000, averageAmt: 3600  },
-    { name: '12', uv: 43, pv: 45, amt: 10, averagePv: 20, averageUv: 7200, averageAmt: 2600 },
-    { name: '13', uv: 74, pv: 90, amt: 80, averagePv: 20, averageUv: 1000, averageAmt: 5000 },
-    { name: '14', uv: 71, pv: 130, amt: 100, averagePv: 30, averageUv: 5000, averageAmt: 3600 },
-    { name: '15', uv: 117, pv: 11, amt: 10, averagePv: 20, averageUv: 7200, averageAmt: 5000 },
-    { name: '16', uv: 186, pv: 107, amt: 120, averagePv: 20, averageUv: 5000, averageAmt: 3600 },
-    { name: '17', uv: 16, pv: 926, amt: 200, averagePv: 30, averageUv: 7200, averageAmt: 3600 },
-    { name: '18', uv: 125, pv: 653, amt: 300, averagePv: 30, averageUv: 7200, averageAmt: 2600 },
-    { name: '19', uv: 222, pv: 366, amt: 100, averagePv: 60, averageUv: 7200, averageAmt: 3600 },
-    { name: '20', uv: 372, pv: 486, amt: 450, averagePv: 10, averageUv: 5000, averageAmt: 5000 },
-    { name: '21', uv: 182, pv: 512, amt: 300, averagePv: 60, averageUv: 1000, averageAmt: 3600 },
-    { name: '22', uv: 164, pv: 302, amt: 90, averagePv: 30, averageUv: 1000, averageAmt: 5000 },
-    { name: '23', uv: 316, pv: 425, amt: 200, averagePv: 60, averageUv: 5000, averageAmt: 3600 },
-    { name: '24', uv: 131, pv: 467, amt: 150, averagePv: 30, averageUv: 1000, averageAmt: 5000 },
-    { name: '25', uv: 291, pv: 190, amt: 50, averagePv: 60, averageUv: 7200, averageAmt: 3600 },
-    { name: '26', uv: 47, pv: 194, amt: 120, averagePv: 30, averageUv: 7200, averageAmt: 3600 },
-    { name: '27', uv: 415, pv: 371, amt: 170, averagePv: 30, averageUv: 1000, averageAmt: 2600 },
-    { name: '28', uv: 182, pv: 376, amt: 200, averagePv: 60, averageUv: 7200, averageAmt: 5000 },
-    { name: '29', uv: 93, pv: 295, amt: 100, averagePv: 10, averageUv: 1000, averageAmt: 2600 },
-    { name: '30', uv: 99, pv: 322, amt: 240, averagePv: 10, averageUv: 7200, averageAmt: 5000 },
-    { name: '31', uv: 52, pv: 246, amt: 200, averagePv: 60, averageUv: 1000, averageAmt: 2600 },
+    { name: '1', uv: 100, pv: 256 , amt: 70, averagePv: 30, averageUv: 7200, averageAmt: 259200 },
+    { name: '2', uv: 45, pv: 130, amt: 100, averagePv: 20, averageUv: 5000, averageAmt: 76000 },
+    { name: '3', uv: 50, pv: 245, amt: 80 , averagePv: 10, averageUv: 7200, averageAmt: 86400},
+    { name: '4', uv: 8, pv: 150, amt: 100, averagePv: 30, averageUv: 1000, averageAmt: 259200 },
+    { name: '5', uv: 100, pv: 221, amt: 120, averagePv: 30, averageUv: 5000, averageAmt: 26000 },
+    { name: '6', uv: 9, pv: 35, amt: 6, averagePv: 60, averageUv: 7200, averageAmt: 36000 },
+    { name: '7', uv: 53, pv: 167, amt: 30, averagePv: 20, averageUv: 7200, averageAmt: 86400 },
+    { name: '8', uv: 152, pv: 278, amt: 100, averagePv: 30, averageUv: 5000, averageAmt: 259200 },
+    { name: '9', uv: 29, pv: 110, amt: 40, averagePv: 30, averageUv: 7200, averageAmt: 76000 },
+    { name: '10', uv: 94, pv: 123, amt: 10, averagePv: 20, averageUv: 7200, averageAmt: 86400 },
+    { name: '11', uv: 125, pv: 253, amt: 120, averagePv: 30, averageUv: 5000, averageAmt: 259200  },
+    { name: '12', uv: 43, pv: 45, amt: 10, averagePv: 20, averageUv: 7200, averageAmt: 26000 },
+    { name: '13', uv: 74, pv: 90, amt: 80, averagePv: 20, averageUv: 1000, averageAmt: 50000 },
+    { name: '14', uv: 71, pv: 130, amt: 100, averagePv: 30, averageUv: 5000, averageAmt: 36000 },
+    { name: '15', uv: 117, pv: 11, amt: 10, averagePv: 20, averageUv: 7200, averageAmt: 259200 },
+    { name: '16', uv: 186, pv: 107, amt: 120, averagePv: 20, averageUv: 5000, averageAmt: 36000 },
+    { name: '17', uv: 16, pv: 326, amt: 200, averagePv: 30, averageUv: 7200, averageAmt: 36000 },
+    { name: '18', uv: 125, pv: 353, amt: 250, averagePv: 30, averageUv: 7200, averageAmt: 86400 },
+    { name: '19', uv: 222, pv: 366, amt: 100, averagePv: 60, averageUv: 7200, averageAmt: 259200 },
+    { name: '20', uv: 372, pv: 486, amt: 450, averagePv: 10, averageUv: 5000, averageAmt: 86400 },
+    { name: '21', uv: 182, pv: 512, amt: 300, averagePv: 60, averageUv: 1000, averageAmt: 86400 },
+    { name: '22', uv: 164, pv: 302, amt: 90, averagePv: 30, averageUv: 1000, averageAmt: 86400 },
+    { name: '23', uv: 316, pv: 425, amt: 200, averagePv: 60, averageUv: 5000, averageAmt: 86400 },
+    { name: '24', uv: 131, pv: 467, amt: 150, averagePv: 30, averageUv: 1000, averageAmt: 259200 },
+    { name: '25', uv: 291, pv: 190, amt: 50, averagePv: 60, averageUv: 7200, averageAmt: 259200 },
+    { name: '26', uv: 47, pv: 194, amt: 120, averagePv: 30, averageUv: 7200, averageAmt: 86400 },
+    { name: '27', uv: 415, pv: 371, amt: 170, averagePv: 30, averageUv: 1000, averageAmt: 76000 },
+    { name: '28', uv: 182, pv: 376, amt: 200, averagePv: 60, averageUv: 7200, averageAmt: 259200 },
+    { name: '29', uv: 93, pv: 295, amt: 100, averagePv: 10, averageUv: 1000, averageAmt: 76000 },
+    { name: '30', uv: 99, pv: 322, amt: 240, averagePv: 10, averageUv: 7200, averageAmt: 259200 },
     
   ];
 
@@ -89,7 +80,7 @@ export default function MainContainer() {
     const toDate = new Date("11/25/2020").getTime();
     const today = new Date();
 
-    
+
     
     function fancyTimeFormat(duration) {
 

@@ -1,26 +1,25 @@
 import React, { Fragment, useState } from "react";
-import { DatePicker } from "@material-ui/pickers";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from '@date-io/date-fns';
+import {es} from 'date-fns/esm/locale'
 
 function InlineDatePickerDemo(props) {
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const {helperText, date} = props;
+  const [selectedDate, handleDateChange] = useState(date);
 
   return (
     <Fragment>
-      <DatePicker
-        variant="inline"
-        label="Basic example"
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
-
-      <DatePicker
-        disableToolbar
-        variant="inline"
-        label="Only calendar"
-        helperText="No year selection"
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
+      <MuiPickersUtilsProvider utils={DateFnsUtils} locale={es}>
+        <DatePicker
+          disableToolbar
+          inputVariant="outlined"
+          format="dd/MM/yyyy"          
+          helperText={helperText}
+          value={selectedDate}
+          onChange={handleDateChange}
+          disableFuture={true}
+          />
+      </MuiPickersUtilsProvider>
 
     </Fragment>
   );

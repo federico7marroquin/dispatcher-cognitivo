@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const data = [
   {
-    name: 'Personalización',
+    name: 'Derechos de Petición',
     children: [
       { name: 'Axes', size: 1302 },
       { name: 'Axis', size: 24593 },
@@ -16,7 +16,7 @@ const data = [
     ],
   },
   {
-    name: 'Autoridad',
+    name: 'Asuntos Legales',
     children: [
       { name: 'AnchorControl', size: 2138 },
       { name: 'ClickControl', size: 3824 },
@@ -32,7 +32,7 @@ const data = [
     ],
   },
   {
-    name: 'Prueba social',
+    name: 'PQRS',
     children: [
       { name: 'Data', size: 20544 },
       { name: 'DataList', size: 19788 },
@@ -54,7 +54,7 @@ const data = [
     ],
   },
   {
-    name: 'Eventos',
+    name: 'Autorizaciones',
     children: [
       { name: 'DataEvent', size: 7313 },
       { name: 'SelectionEvent', size: 6880 },
@@ -63,7 +63,7 @@ const data = [
     ],
   },
   {
-    name: 'Tutelas',
+    name: 'Certificados',
     children: [
       { name: 'Legend', size: 20859 },
       { name: 'LegendItem', size: 4614 },
@@ -71,7 +71,7 @@ const data = [
     ],
   },
   {
-    name: 'Ventas',
+    name: 'Solicitud de Información',
     children: [
       {
         name: 'distortion',
@@ -137,7 +137,7 @@ const data = [
   },
 ];
 
-const COLORS = ['#8889DD', '#9597E4', '#8DC77B', '#A5D297', '#E2CF45', '#F8C12D'];
+const COLORS = ['#609', '#00C49F', '#ffc658', '#0088fe', '#82ca9d', '#8889DD'];
 
 class CustomizedContent extends PureComponent {
   render() {

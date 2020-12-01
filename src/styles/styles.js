@@ -21,9 +21,6 @@ export  const useStyles = makeStyles((theme) => ({
       display: 'flex',
       overflow: 'hidden',
       flexDirection: 'column',
-    //   '&:hover': {
-    //     background: theme.palette.background.default,
-    //  }
     },
     
     fixedHeight: {

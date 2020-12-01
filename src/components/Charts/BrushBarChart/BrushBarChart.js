@@ -39,7 +39,7 @@ export default class Example extends PureComponent {
                   <Brush dataKey="name" height={30} stroke="#8884d8" onChange={filterValues}/>
                   <Bar name="Resolución en primer nivel" dataKey="pv" fill="#8884d8" />
                   <Bar name="Escalados" dataKey="uv" fill="#82ca9d" />
-                  <Bar name="Escalados con prioridad" dataKey="amt" fill="#ffc658" />
+                  <Bar name="Prioritarios" dataKey="amt" fill="#ffc658" />
               </BarChart>
             </ResponsiveContainer>
         </React.Fragment>

@@ -27,10 +27,10 @@ export default function ResumeContainer(props) {
                     <Grid item xs={12} md={4} lg={3}>
                         <Paper className={fixedHeightPaper}>
                             <Stats
-                                title="Correos Recientes"
-                                date={day}
-                                quantity={quantity}
-                                time={formatTime}
+                                title="Correos Mes Anterior"
+                                date="Noviembre 2020"
+                                quantity={14963}
+                                time='12 Horas con 34 Minutos y 43 Segundos'
                                 route="/escalation" />
                         </Paper>
                     </Grid>
@@ -38,7 +38,7 @@ export default function ResumeContainer(props) {
                     <Grid item xs={12} md={8} lg={9}>
                         <Link to="/tmo" className={classes.linkDecorator}>
                             <Paper className={fixedHeightPaper}>
-                                <TMOBarChart title="TMO x Tipo de Gestión" data={TMOData}/>
+                                <TMOBarChart title="TMO x Tipo de Gestión" onClick={(value) => console.log(value)} data={TMOData}/>
                             </Paper> 
                         </Link>
                     </Grid>

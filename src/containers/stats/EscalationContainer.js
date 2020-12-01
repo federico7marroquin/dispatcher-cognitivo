@@ -9,6 +9,7 @@ import BrushBarChart from '../../components/Charts/BrushBarChart/BrushBarChart';
 import Copyright from '../../components/Copyright/Copyright';
 import MonthYearhDatePicker from '../../components/Pickers/DatePicker/MonthYearDatePicker';
 import {useStyles} from '../../styles/styles';
+import Title from '../../components/Title/Title';
 
 export default function Escalation(props) {
     const classes = useStyles();
@@ -18,14 +19,20 @@ export default function Escalation(props) {
     const {data, fancyTimeFormat} = props;
 
     //state
-    //default time
+    
     const first = data.reduce(((acc,actual)=> acc+actual.averagePv),0)/data.length;
     const second = data.reduce(((acc,actual)=> acc+actual.averageUv),0)/data.length;
     const third = data.reduce(((acc,actual)=> acc+actual.averageAmt),0)/data.length;
     const total = (first+second+third)/3;
+    //
+    const escalationDate = new Date();
+    escalationDate.setMonth(escalationDate.getMonth()-1);
+    //default time
+    const [date, setDate] = useState('Noviembre 2020');
+    const [datePicker, setDatePicker] = useState(escalationDate);
 
     //--emails
-    const [date, setDate] = useState('Noviembre 2020')
+    
     const [firstResolution, setFirstResolution] = useState(data.reduce(((acc,actual)=> acc+actual.pv),0));
     const [scaled, setScaled] = useState(data.reduce(((acc,actual)=> acc+actual.uv),0));
     const [priorScaled, setPriorScaled] = useState(data.reduce(((acc,actual)=> acc+actual.amt),0));
@@ -78,15 +85,30 @@ export default function Escalation(props) {
         setTotalTime(fancyTimeFormat(totalTime));
     }
  
+    const parseMonth = {
+        0: 'Enero',
+        1: 'Febrero',
+        2: 'Marzo',
+        3: 'Abril',
+        4: 'Mayo',
+        5: 'Junio',
+        6: 'Julio',
+        7: 'Agosto',
+        8: 'Septiembre',
+        9: 'Octubre',
+        10: 'Noviembre',
+        11: 'Diciembre'
+    }
+
     const ChangeDate = (data) => {
-        if(data.length===31){
-            setDate(`Noviembre 2020`)
+        if(data.length===31 || data === 'month'){
+            setDate(`${parseMonth[datePicker.getMonth()]} ${datePicker.getFullYear()}`)
         }
         else if(data.length>1){
-            setDate(`del ${data[0].name} al ${data[data.length-1].name} de noviembre, 2020`)
+            setDate(`del ${data[0].name} al ${data[data.length-1].name} de ${parseMonth[datePicker.getMonth()]}, ${datePicker.getFullYear()}`)
         }
         else{
-            setDate(` ${data[0].name} de noviembre, 2020`)
+            setDate(` ${data[0].name} de ${parseMonth[datePicker.getMonth()]}, ${datePicker.getFullYear()}`)
         }
 
     }
@@ -151,8 +173,23 @@ export default function Escalation(props) {
                    {/* Recent Orders */}
                    <Grid item xs={12}>
                         <Paper className={fixedLargeHeightPaper}>
-                            <MonthYearhDatePicker/>
-                            <BrushBarChart data={data} onChange={onChange}/>
+                            <Grid container>
+                                <Grid item xs={10} md={10} lg={10}>
+                                    <Title>Estadísticas</Title>
+
+                                </Grid>
+                                <Grid item xs={2} md={2} lg={2} >
+                                    <MonthYearhDatePicker 
+                                        datePicker ={datePicker}
+                                        setDatePicker={setDatePicker} 
+                                        onChangeDate={ChangeDate}
+                                        />
+                                </Grid>
+                            </Grid>
+                            <BrushBarChart 
+                                data={data} 
+                                onChange={onChange}
+                                />
                         </Paper>
                     </Grid>
                 </Grid>
