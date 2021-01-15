@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 function preventDefault(event) {
   event.preventDefault();
 }
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 const useStyles = makeStyles((theme) => ({
   depositContext: {
@@ -30,7 +33,7 @@ export default function Stats(props) {
     <React.Fragment>
       <Title>{title? title: "Estadísticas" }</Title>
       <Typography component="p" variant="h4">
-      {quantity? quantity: "0"}
+      {quantity? numberWithCommas(quantity): "0"}
       </Typography>
       <Typography color="textSecondary">
         <strong>Promedio: { time? time: null}</strong>
