@@ -22,7 +22,18 @@ export  const useStyles = makeStyles((theme) => ({
       overflow: 'hidden',
       flexDirection: 'column',
     },
-    
+
+    paperMail: {
+      padding: theme.spacing(2),
+      display: 'flex',
+      flexDirection: 'column',
+      height: 'auto',
+      '&:hover': {
+        boxShadow: '0px 0px 5px 1px rgba(0, 0, 0, 0.15)',
+
+      }
+
+    },
     fixedHeight: {
       height: 240,
     },

@@ -11,8 +11,12 @@ import PieChartIcon from '@material-ui/icons/PieChart';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 import PersonIcon from '@material-ui/icons/Person';
+import MailIcon from '@material-ui/icons/Mail';
+import DraftsIcon from '@material-ui/icons/Drafts';
 import { Link } from "react-router-dom";
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import BrushIcon from '@material-ui/icons/Brush';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 const color = "#000000DE";
 
 export const mainListItems = (
@@ -62,36 +66,50 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Saved reports</ListSubheader>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItem>
+    <ListSubheader inset>Configuración</ListSubheader>
+    <Link to='/users' style={{textDecoration: 'none', color: color}}>
+      <ListItem button>
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="Usuarios" />
+      </ListItem>
+    </Link>
+    <Link to="/templates" style={{ textDecoration: "none", color: color }}>
+      <ListItem button>
+        <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Plantillas" />
+      </ListItem>
+    </Link>
+    <Link to='/typologies' style={{ textDecoration: "none", color: color }}>
+      <ListItem button>
+        <ListItemIcon>
+          <BusinessCenterIcon />
+        </ListItemIcon>
+        <ListItemText primary="Reglas de negocio" />
+      </ListItem>
+    </Link>
+    {/* <Link to="/configuration" style={{ textDecoration: "none", color: color }}>
+      <ListItem button>
+        <ListItemIcon>
+          <BrushIcon />
+        </ListItemIcon>
+        <ListItemText primary="Configuración" />
+      </ListItem>
+    </Link> */}
   </div>
 );
 
 export const tertiaryListItems = (
   <div>
-    <Link to="/configuration" style={{ textDecoration: "none", color: color }}>
+    <Link to="/" style={{ textDecoration: "none", color: color }}>
       <ListItem button>
         <ListItemIcon>
-          <PersonIcon />
+          <ExitToAppIcon />
         </ListItemIcon>
-        <ListItemText primary="Configuración" />
+        <ListItemText primary="Cerrar sesión" />
       </ListItem>
     </Link>
   </div>

@@ -6,6 +6,9 @@ import ResolutionTime from './stats/ResolutionTimeContainer';
 import ThemeContainer from './Theme/ThemeContainer'
 import TMO from './stats/TMOContainer';
 import Resume from './stats/ResumeContainer';
+import Templates from './Configuration/TemplatesContainer';
+import Typology from './Configuration/TypologyContainer';
+import Users from './Configuration/usersContainer';
 import config from '../config/config.json'
 
 const TMOData = [
@@ -172,6 +175,15 @@ export default function MainContainer() {
             </Route>
             <Route path="/configuration" >
                 <ThemeContainer />
+            </Route>
+            <Route path="/templates">
+                <Templates/>
+            </Route>
+            <Route path="/typologies">
+                <Typology/>
+            </Route>
+            <Route path="/users">
+                <Users/>
             </Route>
         </Switch>
     );
