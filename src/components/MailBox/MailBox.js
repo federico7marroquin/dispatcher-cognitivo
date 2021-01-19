@@ -6,12 +6,15 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import TextField from '@material-ui/core/TextField';
 import InputBase from '@material-ui/core/InputBase';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 //button icons
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import ImageIcon from '@material-ui/icons/Image';
 import TextFormatIcon from '@material-ui/icons/TextFormat';
+import LinkIcon from '@material-ui/icons/Link';
 
 //image
 import textFormat from '../../assets/images/textFormat.JPG'
@@ -65,27 +68,39 @@ export default function MailBox(props) {
                             </CssButton>
                         </ButtonGroup>
                         <div className={classes.toolBar}>
-                            <CssButton>
-                                <TextFormatIcon />
-                            </CssButton>
-                            <CssButton>
-                                <AttachFileIcon fontSize="small" />
-                            </CssButton>
-                            <CssButton>
-                                <AttachmentIcon />
-                            </CssButton>
-                            <CssButton>
-                                <InsertEmoticonIcon />
-                            </CssButton>
-                            <CssButton>
-                                <ImageIcon />
-                            </CssButton>
+                            <Tooltip title='Opciones de Formato'>
+                                <IconButton>
+                                    <TextFormatIcon fontSize="small"/>
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title='Adjuntar Archivo'>
+                                <IconButton>
+                                    <AttachFileIcon fontSize="small" />
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title='Insertar Link'>
+                                <IconButton>
+                                    <LinkIcon fontSize="small"/>
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title='Insertar Emoji'>
+                                <IconButton>
+                                    <InsertEmoticonIcon fontSize="small"/>
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title='Insertar Foto'>
+                                <IconButton>
+                                    <ImageIcon fontSize="small"/>
+                                </IconButton>
+                            </Tooltip>
                         </div>
                     </div>
                     <div className={classes.discardOptions}>
-                        <CssButton>
-                            <DeleteIcon />
-                        </CssButton>
+                        <Tooltip title='Descartar'>
+                            <IconButton aria-label="Descartar">
+                                <DeleteIcon />
+                            </IconButton>
+                        </Tooltip>
                     </div>
                 </div>
             </div>

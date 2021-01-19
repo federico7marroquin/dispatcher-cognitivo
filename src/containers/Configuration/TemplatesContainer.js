@@ -38,7 +38,7 @@ const rows = [
 export default function TemplatesContainer(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paperMail, classes.fixedMediumHeight)
-
+    const {typologies} = props
 
     return (
         <main className={classes.content}>
@@ -47,7 +47,9 @@ export default function TemplatesContainer(props) {
                     <Grid className={classes.depositContext} container spacing={3}>
                         <Grid item xs={12}>
                             <Paper className={classes.paperMail}>
-                                <MailBox/>
+                                <MailBox
+                                    typologies={typologies}
+                                />
                             </Paper>
                         </Grid>
                         <Grid item xs={12}>
@@ -55,7 +57,7 @@ export default function TemplatesContainer(props) {
                                 <Table
                                     title='Plantillas'
                                     headCells={headCells}
-                                    rows={rows}
+                                    values={rows}
                                 />
                             </Paper>
                         </Grid>

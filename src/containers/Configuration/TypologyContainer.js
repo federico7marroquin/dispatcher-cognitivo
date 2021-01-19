@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box';
 
 export default function TypologyContainer(props) {
     const classes = useStyles()
-
+    const {typologies} = props
     return (
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
@@ -20,7 +20,9 @@ export default function TypologyContainer(props) {
                     container
                     spacing={3}
                     >
-                    <TypologyList />
+                    <TypologyList 
+                        typologies={typologies}
+                        />
                 </Grid>
                 <Box pt={4}>
                     <Copyright />

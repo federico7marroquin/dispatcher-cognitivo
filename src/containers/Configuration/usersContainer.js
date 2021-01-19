@@ -56,7 +56,7 @@ export default function UsersContainer(props) {
                                 title='Usuarios'
                                 usuarios={true}
                                 headCells={headCells}
-                                rows={rows}    
+                                values={rows}    
                             />
                         </Paper>
                     </Grid>

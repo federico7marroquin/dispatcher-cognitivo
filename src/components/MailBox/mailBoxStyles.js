@@ -115,14 +115,12 @@ export const useStyles = makeStyles((theme) => ({
         opacity: '0.7',
     },
     toolBar: {
-        marginLeft: '5px',
-        color: 'black',
-        opacity: '0.7',
-        display: 'flex',
-        alignSelf: 'center',
-        fontSize: "50px",
-        width: '180px',
-        justifyContent: 'space-around'
+        // marginLeft: '5px',
+        // display: 'flex',
+        // alignSelf: 'center',
+        // fontSize: "50px",
+        // width: '180px',
+        // justifyContent: 'space-around'
 
     },
 

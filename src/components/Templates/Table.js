@@ -135,7 +135,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
     const classes = useToolbarStyles();
-    const { numSelected, title, usuarios } = props;
+    const { numSelected, title, usuarios, deleteSelected } = props;
 
     return (
         <Toolbar
@@ -165,7 +165,7 @@ const EnhancedTableToolbar = (props) => {
                     }
 
                     <Tooltip title="Eliminar">
-                        <IconButton aria-label="Eliminar">
+                        <IconButton aria-label="Eliminar" onClick={deleteSelected}>
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>
@@ -227,8 +227,10 @@ export default function EnhancedTable(props) {
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
-    const { title, rows, headCells, usuarios } = props;
-    const [rowsPerPage, setRowsPerPage] = React.useState(usuarios? 10: 5);
+    const { title, values, headCells, usuarios } = props;
+    const [rows, setRows] = React.useState(values);
+    const [rowsPerPage, setRowsPerPage] = React.useState(usuarios ? 10 : 5);
+
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -236,6 +238,29 @@ export default function EnhancedTable(props) {
         setOrderBy(property);
     };
 
+    const deleteSelected = () => {
+        console.log('eliminar', selected)
+        console.log('values', rows)
+        const newValues = []
+        for(let j=0; j< rows.length; j++){
+            let isSelected = false
+            for(let i =0; i<selected.length; i ++){
+                if(selected[i]===rows[j].name){
+                    isSelected =true;
+                    break;
+                }
+            }
+            if(!isSelected){
+                newValues.push(rows[j])
+            }
+            
+        };
+
+        console.log('eliminar', selected)
+        console.log('values', newValues)
+        setRows(newValues);
+        setSelected([]);
+    }
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
             const newSelecteds = rows.map((n) => n.name);
@@ -284,7 +309,8 @@ export default function EnhancedTable(props) {
             <EnhancedTableToolbar
                 usuarios={usuarios}
                 title={title}
-                numSelected={selected.length} />
+                numSelected={selected.length} 
+                deleteSelected={deleteSelected}/>
             <TableContainer>
                 <Table
                     className={classes.table}

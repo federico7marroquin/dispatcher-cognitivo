@@ -75,6 +75,22 @@ const Escalationdata = [
     
   ];
 
+  const typologies = [
+    'Solicitud de Información',
+    'Peticiones, Quejas y Reclamos',
+    'Asuntos Legales',
+    'Demandas',
+    'Certificados',
+    'Autorizaciones',
+    'Derechos de Peticiones',
+    'Atención Prioritaria',
+    'Tutelas',
+    'Servicio al Cliente',
+    'Casos sin tipificar',
+    'Soporte técnico',
+    'Ventas',
+]
+
 export default function MainContainer() {
     const [formatTime, setFormatTime] = useState(0);
     const [quantity, setQuantity] = useState(0);
@@ -177,10 +193,14 @@ export default function MainContainer() {
                 <ThemeContainer />
             </Route>
             <Route path="/templates">
-                <Templates/>
+                <Templates
+                    typologies={typologies}
+                />
             </Route>
             <Route path="/typologies">
-                <Typology/>
+                <Typology
+                    typologies={typologies}
+                />
             </Route>
             <Route path="/users">
                 <Users/>

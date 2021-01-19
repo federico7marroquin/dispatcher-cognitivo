@@ -45,27 +45,14 @@ function union(a, b) {
     return [...a, ...not(b, a)];
 }
 
-const typologies = [
-    'Solicitud de Información',
-    'Peticiones, Quejas y Reclamos',
-    'Asuntos Legales',
-    'Demandas',
-    'Certificados',
-    'Autorizaciones',
-    'Derechos de Peticiones',
-    'Atención Prioritaria',
-    'Tutelas',
-    'Servicio al Cliente',
-    'Casos sin tipificar',
-    'Soporte técnico',
-    'Ventas',
-]
-export default function TransferList() {
+
+export default function TransferList(props) {
     const classes = useStyles();
     const [checked, setChecked] = React.useState([]);
     const [left, setLeft] = React.useState([0, 1, 2, 3]);
     const [middle, setMiddle] = React.useState([9, 10, 11, 12]);
     const [right, setRight] = React.useState([4, 5, 6, 7]);
+    const {typologies} = props
 
     const leftChecked = intersection(checked, left);
     const middleChecked = intersection(checked, middle);
