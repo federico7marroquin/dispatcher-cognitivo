@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PieChartIcon from '@material-ui/icons/PieChart';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -7,6 +7,8 @@ import InputBase from '@material-ui/core/InputBase';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import Box from '@material-ui/core/Box';
+
 //button icons
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import AttachmentIcon from '@material-ui/icons/Attachment';
@@ -20,51 +22,73 @@ import textFormat from '../../assets/images/textFormat.JPG'
 
 import Button from '@material-ui/core/Button';
 
-import { useStyles, CssTextField, CssButton } from './mailBoxStyles';
+import { CssTextField, CssButton } from './mailBoxStyles';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 
 export default function MailBox(props) {
-    const classes = useStyles();
-    const { handleClicktypOpen, selectedTyp, setSelectedTyp, createTemplate } = props;
+    const { handleClicktypOpen, selectedTyp, setSelectedTyp, createTemplate, alreadyCreated, parentSubject, parentBody } = props;
     // const []
 
-    const [subject, setSubject] = useState('');
-    const [bodyTemplate, setBodyTemplate] = useState('');
+    const [subject, setSubject] = useState(parentSubject);
+    const [bodyTemplate, setBodyTemplate] = useState(parentBody);
+    const [pushed, setPushed] = useState(false);
+
+    useEffect(() => {
+        if (alreadyCreated === true) {
+            setSelectedTyp([])
+            setSubject('');
+            setBodyTemplate('');
+            setPushed(false);
+        }
+    }, [alreadyCreated, setSelectedTyp])
 
     const handleSaveTamplate = () => {
-        createTemplate(selectedTyp.join(', '), subject, bodyTemplate);
+        if (subject !== '' & selectedTyp.length > 0) {
+            createTemplate(selectedTyp.join(', '), subject, bodyTemplate);
+        }
+        setPushed(true)
     }
 
     const handleDiscardChanges = () => {
         setSelectedTyp([])
         setSubject('');
         setBodyTemplate('');
+        setPushed(false);
+
     }
 
 
+
     return (
-        <div className={classes.wrapper}>
-            <div className={classes.typology}>
-                <IconButton onClick={handleClicktypOpen}>
-                    <PieChartIcon />
-                    <ArrowDropDownIcon />
-                </IconButton>
-                <div className={classes.typeLabel}>
-                    <span primary=''>
-                        { selectedTyp.length && selectedTyp.length > 0 ?selectedTyp.join(', ') :'Tipologías...'}
-                    </span>
-                </div>
-            </div>
-            <div className={classes.subject}>
-                <CssTextField
-                    onChange={ e => setSubject(e.target.value)}
+        <React.Fragment>
+            <Box ml={1} mb={2}>
+                <Grid container alignItems='center'>
+                    <Tooltip title='Seleccionar tipologías'>
+                        <IconButton size='small' onClick={handleClicktypOpen}>
+                            <PieChartIcon color={pushed && selectedTyp.length === 0 ? 'error' : 'inherit'} />
+                            <ArrowDropDownIcon color={pushed && selectedTyp.length === 0 ? 'error' : 'inherit'} />
+                        </IconButton>
+                    </Tooltip>
+                    <Typography variant='body1'
+                        color={pushed && selectedTyp.length === 0 ? 'error' : "textSecondary"}>
+                        {selectedTyp.length && selectedTyp.length > 0 ? selectedTyp.join(', ') : pushed ? 'Tipologías*' : 'Tipologías...'}
+                    </Typography>
+                </Grid>
+            </Box>
+            <Box ml={1} mr={1} >
+                <TextField
+                    error={pushed && subject === ''}
+                    onChange={e => setSubject(e.target.value)}
                     value={subject}
                     fullWidth
                     placeholder="Asunto"
                 />
-            </div>
-            <div className={classes.textBox}>
+            </Box>
+            <Box m={1}>
                 <InputBase
+                    // error={pushed&&bodyTemplate===''}
                     onChange={e => setBodyTemplate(e.target.value)}
                     value={bodyTemplate}
                     multiline
@@ -72,56 +96,81 @@ export default function MailBox(props) {
                     rowsMax={40}
                     fullWidth
                 />
-            </div>
-            <div className={classes.formatBar}>
+            </Box>
+            <Box>
                 <img src={textFormat} alt='Formato de texto' />
-            </div>
-            <div className={classes.buttonGroup}>
-                <div className={classes.buttonOptions}>
-                    <ButtonGroup variant="contained" color="secondary">
-                        <Button 
-                            className='btn' 
-                            color='secondary' 
-                            onClick={handleSaveTamplate}
-                            >
-                                 Guardar
+            </Box>
+            <Box m={1}>
+                <Grid container justify='space-between'>
+                    <Box >
+                        <Grid container alignItems='center' direction='row'>
+                            <ButtonGroup variant="contained" color="secondary">
+                                <Button
+                                    className='btn'
+                                    color='secondary'
+                                    onClick={handleSaveTamplate}
+                                >
+                                    Crear
                             </Button>
-                        <CssButton color='secondary'>
-                            <ArrowDropDownIcon />
-                        </CssButton>
-                    </ButtonGroup>
-                    <Tooltip title='Opciones de Formato'>
-                        <IconButton>
-                            <TextFormatIcon fontSize="small" />
-                        </IconButton>
-                    </Tooltip>
-                    <Tooltip title='Adjuntar Archivo'>
-                        <IconButton>
-                            <AttachFileIcon fontSize="small" />
-                        </IconButton>
-                    </Tooltip>
-                    <Tooltip title='Insertar Link'>
-                        <IconButton>
-                            <LinkIcon fontSize="small" />
-                        </IconButton>
-                    </Tooltip>
-                    <Tooltip title='Insertar Emoji'>
-                        <IconButton>
-                            <InsertEmoticonIcon fontSize="small" />
-                        </IconButton>
-                    </Tooltip>
-                    <Tooltip title='Insertar Foto'>
-                        <IconButton>
-                            <ImageIcon fontSize="small" />
-                        </IconButton>
-                    </Tooltip>
-                </div>
-                <Tooltip title='Descartar'>
-                    <IconButton aria-label="Descartar" onClick={handleDiscardChanges}>
-                        <DeleteIcon />
-                    </IconButton>
-                </Tooltip>
-            </div>
-        </div>
+                                <CssButton color='secondary'>
+                                    <ArrowDropDownIcon />
+                                </CssButton>
+                            </ButtonGroup>
+                            <Box ml={2} >
+                                <Grid container spacing={2} justify='center'>
+                                    <Grid item>
+
+                                        <Tooltip title='Opciones de Formato'>
+                                            <IconButton size='small'>
+                                                <TextFormatIcon fontSize="small" />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                    <Grid item>
+
+                                        <Tooltip title='Adjuntar Archivo'>
+                                            <IconButton size='small'>
+                                                <AttachFileIcon fontSize="small" />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                    <Grid item>
+
+                                        <Tooltip title='Insertar Link'>
+                                            <IconButton size='small'>
+                                                <LinkIcon fontSize="small" />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                    <Grid item>
+
+                                        <Tooltip title='Insertar Emoji'>
+                                            <IconButton size='small'>
+                                                <InsertEmoticonIcon fontSize="small" />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                    <Grid item>
+
+                                        <Tooltip title='Insertar Foto'>
+                                            <IconButton size='small'>
+                                                <ImageIcon fontSize="small" />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                        </Grid>
+                    </Box>
+                    <Box>
+                        <Tooltip title='Descartar'>
+                            <IconButton size='small' aria-label="Descartar" onClick={handleDiscardChanges}>
+                                <DeleteIcon />
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
+                </Grid>
+            </Box>
+        </React.Fragment>
     );
 }

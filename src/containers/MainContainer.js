@@ -76,19 +76,19 @@ const Escalationdata = [
   ];
 
   const typologies = [
-    {name:'Solicitud de Información', checked:false},
-    {name:'Peticiones, Quejas y Reclamos', checked:false},
-    {name:'Asuntos Legales', checked:false},
-    {name:'Demandas', checked:false},
-    {name:'Certificados', checked:false},
-    {name:'Autorizaciones', checked:false},
-    {name:'Derechos de Peticiones', checked:false},
-    {name:'Atención Prioritaria', checked:false},
-    {name:'Tutelas', checked:false},
-    {name:'Servicio al Cliente', checked:false},
-    {name:'Casos sin tipificar', checked:false},
-    {name:'Soporte técnico', checked:false},
-    {name:'Ventas', checked:false},
+    'Solicitud de Información',
+    'Peticiones, Quejas y Reclamos',
+    'Asuntos Legales',
+    'Demandas',
+    'Certificados',
+    'Autorizaciones', 
+    'Derechos de Peticiones', 
+    'Atención Prioritaria', 
+    'Tutelas', 
+    'Servicio al Cliente', 
+    'Casos sin tipificar', 
+    'Soporte técnico', 
+    'Ventas', 
 ]
 
 export default function MainContainer() {

@@ -135,7 +135,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
     const classes = useToolbarStyles();
-    const { numSelected, title, usuarios, deleteSelected } = props;
+    const { numSelected, title, usuarios, deleteItem, editItem } = props;
 
     return (
         <Toolbar
@@ -158,14 +158,14 @@ const EnhancedTableToolbar = (props) => {
                     {
                         numSelected === 1 &&
                         <Tooltip title="Editar">
-                            <IconButton aria-label="Editar">
+                            <IconButton onClick={editItem} aria-label="Editar">
                                 <EditIcon />
                             </IconButton>
                         </Tooltip>
                     }
 
                     <Tooltip title="Eliminar">
-                        <IconButton aria-label="Eliminar" onClick={deleteSelected}>
+                        <IconButton aria-label="Eliminar" onClick={deleteItem}>
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>
@@ -225,9 +225,10 @@ export default function EnhancedTable(props) {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
+    const [toEdit, setToEdit] = React.useState();
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
-    const { title, values, headCells, usuarios } = props;
+    const { title, values, headCells, usuarios, executeScroll, setTemplateToEdit } = props;
     const [rows, setRows] = React.useState(values);
     const [rowsPerPage, setRowsPerPage] = React.useState(usuarios ? 10 : 5);
 
@@ -238,9 +239,11 @@ export default function EnhancedTable(props) {
         setOrderBy(property);
     };
 
-    const deleteSelected = () => {
-        console.log('eliminar', selected)
-        console.log('values', rows)
+    const editItem = () => {
+        setTemplateToEdit(toEdit);
+        executeScroll()
+    }
+    const deleteItem = () => {
         const newValues = []
         for(let j=0; j< rows.length; j++){
             let isSelected = false
@@ -256,8 +259,6 @@ export default function EnhancedTable(props) {
             
         };
 
-        console.log('eliminar', selected)
-        console.log('values', newValues)
         setRows(newValues);
         setSelected([]);
     }
@@ -270,23 +271,32 @@ export default function EnhancedTable(props) {
         setSelected([]);
     };
 
-    const handleClick = (event, name) => {
-        const selectedIndex = selected.indexOf(name);
+    const handleClick = (event, row) => {
+        const selectedIndex = selected.indexOf(row.name);
         let newSelected = [];
 
         if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, name);
-        } else if (selectedIndex === 0) {
+            console.log('Agrega')
+            newSelected = newSelected.concat(selected, row.name);
+        } else if (selectedIndex === 0) 
+        {
+            console.log('quita');
             newSelected = newSelected.concat(selected.slice(1));
         } else if (selectedIndex === selected.length - 1) {
+            console.log('quita')
             newSelected = newSelected.concat(selected.slice(0, -1));
         } else if (selectedIndex > 0) {
+            console.log('quita')
             newSelected = newSelected.concat(
                 selected.slice(0, selectedIndex),
                 selected.slice(selectedIndex + 1),
             );
         }
 
+        
+        if(selected.length===0){
+            setToEdit(row);
+        }
         setSelected(newSelected);
     };
 
@@ -310,7 +320,8 @@ export default function EnhancedTable(props) {
                 usuarios={usuarios}
                 title={title}
                 numSelected={selected.length} 
-                deleteSelected={deleteSelected}/>
+                editItem={editItem}
+                deleteItem={deleteItem}/>
             <TableContainer>
                 <Table
                     className={classes.table}
@@ -338,7 +349,7 @@ export default function EnhancedTable(props) {
                                 return (
                                     <TableRow
                                         hover
-                                        onClick={(event) => handleClick(event, row.name)}
+                                        onClick={(event) => handleClick(event, row)}
                                         role="checkbox"
                                         aria-checked={isItemSelected}
                                         tabIndex={-1}
