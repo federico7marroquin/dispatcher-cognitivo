@@ -1,5 +1,4 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react'
 import PieChartIcon from '@material-ui/icons/PieChart';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -26,85 +25,103 @@ import { useStyles, CssTextField, CssButton } from './mailBoxStyles';
 
 export default function MailBox(props) {
     const classes = useStyles();
+    const { handleClicktypOpen, selectedTyp, setSelectedTyp, createTemplate } = props;
+    // const []
+
+    const [subject, setSubject] = useState('');
+    const [bodyTemplate, setBodyTemplate] = useState('');
+
+    const handleSaveTamplate = () => {
+        createTemplate(selectedTyp.join(', '), subject, bodyTemplate);
+    }
+
+    const handleDiscardChanges = () => {
+        setSelectedTyp([])
+        setSubject('');
+        setBodyTemplate('');
+    }
+
 
     return (
         <div className={classes.wrapper}>
             <div className={classes.typology}>
-                <div className={classes.typeIcon}>
-                    <Button className={classes.typeButton}>
-                        <PieChartIcon />
-                        <ArrowDropDownIcon />
-                    </Button>
-                </div>
+                <IconButton onClick={handleClicktypOpen}>
+                    <PieChartIcon />
+                    <ArrowDropDownIcon />
+                </IconButton>
                 <div className={classes.typeLabel}>
-                    <span primary=''>Tipología seleccionada</span>
+                    <span primary=''>
+                        { selectedTyp.length && selectedTyp.length > 0 ?selectedTyp.join(', ') :'Tipologías...'}
+                    </span>
                 </div>
             </div>
             <div className={classes.subject}>
                 <CssTextField
+                    onChange={ e => setSubject(e.target.value)}
+                    value={subject}
                     fullWidth
                     placeholder="Asunto"
                 />
             </div>
             <div className={classes.textBox}>
                 <InputBase
+                    onChange={e => setBodyTemplate(e.target.value)}
+                    value={bodyTemplate}
                     multiline
                     rows={5}
                     rowsMax={40}
                     fullWidth
-
                 />
             </div>
-            <div className={classes.footer}>
-                <div className={classes.formatBar}>
-                    <img src={textFormat} alt='Formato de texto' />
+            <div className={classes.formatBar}>
+                <img src={textFormat} alt='Formato de texto' />
+            </div>
+            <div className={classes.buttonGroup}>
+                <div className={classes.buttonOptions}>
+                    <ButtonGroup variant="contained" color="secondary">
+                        <Button 
+                            className='btn' 
+                            color='secondary' 
+                            onClick={handleSaveTamplate}
+                            >
+                                 Guardar
+                            </Button>
+                        <CssButton color='secondary'>
+                            <ArrowDropDownIcon />
+                        </CssButton>
+                    </ButtonGroup>
+                    <Tooltip title='Opciones de Formato'>
+                        <IconButton>
+                            <TextFormatIcon fontSize="small" />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title='Adjuntar Archivo'>
+                        <IconButton>
+                            <AttachFileIcon fontSize="small" />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title='Insertar Link'>
+                        <IconButton>
+                            <LinkIcon fontSize="small" />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title='Insertar Emoji'>
+                        <IconButton>
+                            <InsertEmoticonIcon fontSize="small" />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title='Insertar Foto'>
+                        <IconButton>
+                            <ImageIcon fontSize="small" />
+                        </IconButton>
+                    </Tooltip>
                 </div>
-                <div className={classes.buttonGroup}>
-                    <div className={classes.buttonOptions}>
-                        <ButtonGroup variant="contained" color="secondary">
-                            <Button className='btn' color='secondary'> Guardar</Button>
-                            <CssButton color='secondary'>
-                                <ArrowDropDownIcon />
-                            </CssButton>
-                        </ButtonGroup>
-                        <div className={classes.toolBar}>
-                            <Tooltip title='Opciones de Formato'>
-                                <IconButton>
-                                    <TextFormatIcon fontSize="small"/>
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title='Adjuntar Archivo'>
-                                <IconButton>
-                                    <AttachFileIcon fontSize="small" />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title='Insertar Link'>
-                                <IconButton>
-                                    <LinkIcon fontSize="small"/>
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title='Insertar Emoji'>
-                                <IconButton>
-                                    <InsertEmoticonIcon fontSize="small"/>
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title='Insertar Foto'>
-                                <IconButton>
-                                    <ImageIcon fontSize="small"/>
-                                </IconButton>
-                            </Tooltip>
-                        </div>
-                    </div>
-                    <div className={classes.discardOptions}>
-                        <Tooltip title='Descartar'>
-                            <IconButton aria-label="Descartar">
-                                <DeleteIcon />
-                            </IconButton>
-                        </Tooltip>
-                    </div>
-                </div>
+                <Tooltip title='Descartar'>
+                    <IconButton aria-label="Descartar" onClick={handleDiscardChanges}>
+                        <DeleteIcon />
+                    </IconButton>
+                </Tooltip>
             </div>
         </div>
     );
-
 }

@@ -12,7 +12,7 @@ export default function TypologyContainer(props) {
     return (
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
-            <Container maxWidht='lg' className={classes.container}>
+            <Container maxWidth='lg' className={classes.container}>
                 <Grid
                     justify="center"
                     alignItems="center"
