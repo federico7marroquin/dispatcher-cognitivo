@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStyles } from '../../styles/styles';
-import clsx from 'clsx';
 
 import Copyright from '../../components/Copyright/Copyright';
 import Container from '@material-ui/core/Container';
@@ -8,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import Table from '../../components/Templates/Table';
+import Table from '../../components/Templates/GenericTable';
 
 const headCells = [
     { id: 'name', numeric: false, disablePadding: true, label: 'ID' },
@@ -39,7 +38,6 @@ const rows = [
 
 export default function UsersContainer(props) {
     const classes = useStyles();
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 
     return (

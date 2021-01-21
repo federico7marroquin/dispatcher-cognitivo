@@ -11,7 +11,6 @@ import Box from '@material-ui/core/Box';
 
 //button icons
 import AttachFileIcon from '@material-ui/icons/AttachFile';
-import AttachmentIcon from '@material-ui/icons/Attachment';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import ImageIcon from '@material-ui/icons/Image';
 import TextFormatIcon from '@material-ui/icons/TextFormat';
@@ -22,7 +21,7 @@ import textFormat from '../../assets/images/textFormat.JPG'
 
 import Button from '@material-ui/core/Button';
 
-import { CssTextField, CssButton } from './mailBoxStyles';
+import { CssButton } from './mailBoxStyles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
@@ -45,7 +44,7 @@ export default function MailBox(props) {
     }, [alreadyCreated, setSelectedTyp])
 
     const handleSaveTamplate = () => {
-        if (subject !== '' & selectedTyp.length > 0) {
+        if (subject !== '' && selectedTyp.length > 0) {
             createTemplate(selectedTyp.join(', '), subject, bodyTemplate);
         }
         setPushed(true)

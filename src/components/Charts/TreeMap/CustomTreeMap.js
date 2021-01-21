@@ -202,7 +202,7 @@ depositContext: {
 
 
 
-export default function Example () {
+export default function CustomTreeMap () {
     const classes = useStyles();
   
     return (

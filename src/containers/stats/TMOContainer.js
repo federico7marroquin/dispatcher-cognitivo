@@ -5,47 +5,40 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Stats from '../../components/Stats/Stats';
-import BrushBarChart from '../../components/Charts/BrushBarChart/BrushBarChart';
 import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/styles';
 import TMOBarChart from '../../components/Charts/BarChart/TMOBarChart';
 import FullDatePicker from '../../components/Pickers/DatePicker/FullDatePicker';
 import Title from '../../components/Title/Title';
 
-export default function TMO(props) {
+export default function TMOContainer(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     const fixedLargeHeightPaper = clsx(classes.paper, classes.fixedLargeHeight);
 
-    const [total, setTotal] = useState();
-    const [type1, setType1] = useState();
-    const [type2, setType2] = useState();
+    const [total, setTotal] = useState({});
+    const [type1, setType1] = useState({});
+    const [type2, setType2] = useState({});
 
     const {data} = props;
 
     const onClick = (payload) =>{
         if(payload.name ==='Prioritarios'){
-            console.log('hola')
             setTotal({title: 'Total ' + payload.name, quantity:  payload.pqrs + payload.asun, time: '36 Horas con 17 Minutos y 33 Segundos'});
             setType1({title: 'PQRS', quantity:  payload.pqrs, time: '28 Horas con 20 Minutos y 2 segundos' });
             setType2({title: 'Asuntos Legales', quantity:  payload.asun, time: '44 Horas con 15 Minutos y 24 Segundos' });
         }
         else if(payload.name ==='Escalados' ){
-            console.log('hola2')
-
             setTotal({title:  'Total ' + payload.name, quantity:  payload.cert + payload.auto, time: '1 Hora con 26 Minutos y 6 Segundos'});
             setType1({title: 'Autorizaciones', quantity:  payload.cert, time: '50 Minutos y 35 Segundos' });
             setType2({title: 'Certificados', quantity:  payload.auto, time: '1 Hora con 11 Minutos y 24 Segundos' });
         }
         else {
-            console.log('hola3')
-
             setTotal({title: 'Total ' +  payload.name, quantity:  payload.info + payload.otros, time: '31 Segundos'});
             setType1({title: 'Solicitud de Información', quantity:  payload.info, time: '26 Segundos' });
             setType2({title: 'Otros', quantity:  payload.otros, time: '35 Segundos' });
             
         }
-        console.log(payload)
     }
     
     return (

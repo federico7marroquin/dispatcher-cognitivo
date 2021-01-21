@@ -4,7 +4,6 @@ import './index.css';
 import App from './containers/AppContainer';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter  as Router,} from "react-router-dom";
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 ReactDOM.render(
   <React.StrictMode>

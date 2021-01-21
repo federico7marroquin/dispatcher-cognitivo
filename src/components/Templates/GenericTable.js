@@ -220,7 +220,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function EnhancedTable(props) {
+export default function GenericTable(props) {
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -245,19 +245,20 @@ export default function EnhancedTable(props) {
     }
     const deleteItem = () => {
         const newValues = []
+
         for(let j=0; j< rows.length; j++){
-            let isSelected = false
+            let alreadySelected = false
             for(let i =0; i<selected.length; i ++){
                 if(selected[i]===rows[j].name){
-                    isSelected =true;
+                    alreadySelected =true;
                     break;
                 }
             }
-            if(!isSelected){
+            if(!alreadySelected){
                 newValues.push(rows[j])
             }
             
-        };
+        }
 
         setRows(newValues);
         setSelected([]);

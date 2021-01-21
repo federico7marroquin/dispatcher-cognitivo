@@ -1,18 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { useStyles } from '../../styles/styles';
-import clsx from 'clsx';
 import Copyright from '../../components/Copyright/Copyright';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import MailBox from '../../components/MailBox/MailBox';
-import Table from '../../components/Templates/Table';
+import Table from '../../components/Templates/GenericTable';
 import FormDialog from '../../components/FormDialog/FormDialog';
 import TemplateDialog from '../../components/TemplateDialog/TemplateDialog';
-
-import TypologiesForm from '../../components/FormDialog/TypologiesForm';
-import { set } from 'date-fns';
 
 const headCells = [
     { id: 'name', numeric: false, disablePadding: true, label: 'Nombre ' },
@@ -24,6 +20,11 @@ const headCells = [
 
 function createData(name, calories, fat, carbs, protein, body) {
     return { name, calories, fat, carbs, protein, body };
+}
+
+//name, typologies, subject, description, date, body, state
+function createTemplate(name, typologies, subject, description, date, body, state) {
+    return { name, typologies, subject, description, date, body, state };
 }
 const rows = [
     createData('Consultas pqr', 'PRQS', 'Peticiónes', 'Descripción...', '2 Ene. 2021' , 'este es un body'),
@@ -49,7 +50,6 @@ export default function TemplatesContainer(props) {
     const [body, setBody] = useState('');
     const [rules, setRules] = useState('');
     const [alreadyCreated, setAlreadyCreated] = useState(false);
-    const fixedHeightPaper = clsx(classes.paperMail, classes.fixedMediumHeight);
     const {typologies} = props;
 
     const myRef = useRef(null);
@@ -71,6 +71,7 @@ export default function TemplatesContainer(props) {
         setTemplateOpen(false);
     };
 
+    //refactor
     const createTemplate = (rules, subject, body) => {
         setTemplateOpen(true);
         setSubject(subject);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box';
 import Chart from '../../components/Charts/Chart/Chart';
 import TMOBarChart from '../../components/Charts/BarChart/TMOBarChart';
 import Stats from '../../components/Stats/Stats';
-import PieChart from '../../components/Charts/PieChart/PieChart';
+import PieChart from '../../components/Charts/PieChart/EmailPieChart';
 import Copyright from '../../components/Copyright/Copyright';
 import { useStyles } from '../../styles/styles';
 
@@ -16,7 +16,7 @@ export default function ResumeContainer(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedMediumHeight);
     
-    const {formatTime, quantity, day, TMOData, todayData} = props;
+    const {TMOData, todayData} = props;
 
     return (
         <main className={classes.content}>

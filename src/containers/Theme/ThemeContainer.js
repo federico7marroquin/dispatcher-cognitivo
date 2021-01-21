@@ -13,8 +13,6 @@ import SelectPicker from '../../components/Pickers/SelectPicker/SelectPicker';
 import {  TwitterPicker  } from 'react-color';
 import { useStyles } from '../../styles/styles';
 import { makeStyles } from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core/styles'
-import { green, orange,  blue, red } from '@material-ui/core/colors';
 
 //export const theme = createMuiTheme({
 //   typography: {

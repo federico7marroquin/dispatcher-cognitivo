@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react';
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
-} from 'recharts';
-import Title from '../../Title/Title';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 
-export default class Example extends PureComponent {
+export default class TMOBarChart extends PureComponent {
 
  
   render() {
@@ -16,7 +13,6 @@ export default class Example extends PureComponent {
  
     return (
         <React.Fragment>
-            {/* <Title>{this.props.title? this.props.title:"Hoy"}</Title> */}
             <ResponsiveContainer>
                 <BarChart
                     

@@ -1,11 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { DatePicker, MuiPickersUtilsProvider  } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import {es} from 'date-fns/esm/locale'
 
 function MonthYearDatePicker(props) {
-  const [startDate, setStarDate] = useState(new Date());
-  const [ endDate, setEndDate] = useState(new Date());
   const { datePicker, setDatePicker, onChangeDate} = props;
 
   const onChange = (date) => {

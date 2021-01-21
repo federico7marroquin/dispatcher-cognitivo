@@ -11,11 +11,10 @@ import MonthYearhDatePicker from '../../components/Pickers/DatePicker/MonthYearD
 import {useStyles} from '../../styles/styles';
 import Title from '../../components/Title/Title';
 
-export default function Escalation(props) {
+export default function EscalationContainer(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     const fixedLargeHeightPaper = clsx(classes.paper, classes.fixedLargeHeight);
-    const fixedResponsiveHeightPaper = clsx(classes.paper, classes.fixedTotalHeight);
     const {data, fancyTimeFormat} = props;
 
     //state
@@ -43,46 +42,46 @@ export default function Escalation(props) {
     const [priorScaledTime, setPriorScaledTime] = useState(fancyTimeFormat(third));
     const [totalTime, setTotalTime] = useState(fancyTimeFormat(total));
 
-    const onChange = (data)=> {
-        ChangeDate(data);
-        changeStats(data);
+    const onChange = (dataChanged)=> {
+        ChangeDate(dataChanged);
+        changeStats(dataChanged);
     }
 
    
-    const changeStats = (data) =>{
+    const changeStats = (dataChanged) =>{
 
-        let scaled=0;
-        let prior=0;
-        let scaledTime=0;
-        let priorTime=0;
-        let firstTime=0;
+        let newScaled=0;
+        let newPrior=0;
+        let newScaledTime=0;
+        let newPriorTime=0;
+        let newFirstTime=0;
         //{ name: '1', uv: 300, pv: 456 , amt: 100, averageUv: 30, averagePv: 7200, averageAmt: 3600 },
 
-        const first = data.reduce((acc, actual) => {
-            scaled+= actual.uv;
-            prior+= actual.amt;
-            scaledTime+= actual.averageUv;
-            priorTime+= actual.averageAmt;
-            firstTime+= actual.averagePv;
+        const newFirstResolution = dataChanged.reduce((acc, actual) => {
+            newScaled+= actual.uv;
+            newPrior+= actual.amt;
+            newScaledTime+= actual.averageUv;
+            newPriorTime+= actual.averageAmt;
+            newFirstTime+= actual.averagePv;
             return acc + actual.pv
         }, 0);
 
-        firstTime = firstTime/data.length;
-        scaledTime = scaledTime/data.length;
-        priorTime = priorTime/data.length;
-        const totalTime = (firstTime + scaledTime + priorTime)/3;
+        newFirstTime = newFirstTime/dataChanged.length;
+        newScaledTime = newScaledTime/dataChanged.length;
+        newPriorTime = newPriorTime/dataChanged.length;
+        const newTotalTime = (newFirstTime + scaledTime + newPriorTime)/3;
 
         //update quantity of emails
-        setFirstResolution(first);
-        setScaled(scaled);
-        setPriorScaled(prior);
-        setTotalEmials(first+ scaled+prior);
+        setFirstResolution(newFirstResolution);
+        setScaled(newScaled);
+        setPriorScaled(newPrior);
+        setTotalEmials(newFirstResolution+ newScaled+newPrior);
 
         //times
-        setFirstTime(fancyTimeFormat(firstTime));
-        setScaledTime(fancyTimeFormat(scaledTime));
-        setPriorScaledTime(fancyTimeFormat(priorTime));
-        setTotalTime(fancyTimeFormat(totalTime));
+        setFirstTime(fancyTimeFormat(newFirstTime));
+        setScaledTime(fancyTimeFormat(newScaledTime));
+        setPriorScaledTime(fancyTimeFormat(newPriorTime));
+        setTotalTime(fancyTimeFormat(newTotalTime));
     }
  
     const parseMonth = {
@@ -100,15 +99,15 @@ export default function Escalation(props) {
         11: 'Diciembre'
     }
 
-    const ChangeDate = (data) => {
-        if(data.length===31 || data === 'month'){
+    const ChangeDate = (dataChanged) => {
+        if(dataChanged.length===31 || dataChanged === 'month'){
             setDate(`${parseMonth[datePicker.getMonth()]} ${datePicker.getFullYear()}`)
         }
-        else if(data.length>1){
-            setDate(`del ${data[0].name} al ${data[data.length-1].name} de ${parseMonth[datePicker.getMonth()]}, ${datePicker.getFullYear()}`)
+        else if(dataChanged.length>1){
+            setDate(`del ${dataChanged[0].name} al ${dataChanged[dataChanged.length-1].name} de ${parseMonth[datePicker.getMonth()]}, ${datePicker.getFullYear()}`)
         }
         else{
-            setDate(` ${data[0].name} de ${parseMonth[datePicker.getMonth()]}, ${datePicker.getFullYear()}`)
+            setDate(` ${dataChanged[0].name} de ${parseMonth[datePicker.getMonth()]}, ${datePicker.getFullYear()}`)
         }
 
     }

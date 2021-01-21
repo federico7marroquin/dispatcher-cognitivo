@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
-import {
-  PieChart, Pie, Legend, Tooltip, ResponsiveContainer
-} from 'recharts';
+import {PieChart, Pie, Tooltip, ResponsiveContainer} from 'recharts';
+
 
 const data01 = [
   { name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
@@ -15,7 +14,7 @@ const data02 = [
   { name: 'Group E', value: 3908 }, { name: 'Group F', value: 4800 },
 ];
 
-export default class Example extends PureComponent {
+export default class PieChartTooltip extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/k9jkog04/';
 
   render() {

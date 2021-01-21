@@ -6,12 +6,12 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import CustomTreeMap from '../../components/Charts/TreeMap/CustomTreeMap';
 
-import PieChart from '../../components/Charts/PieChart/PieChart';
+import PieChart from '../../components/Charts/PieChart/EmailPieChart';
 import Emails from '../../components/Emails/Emails';
 import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/styles';
 
-export default function ResolutionTime() {
+export default function ResolutionTimeContainer() {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedLargeHeight, classes.rechartswrapper);
 

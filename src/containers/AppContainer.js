@@ -1,12 +1,11 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import MainContainer from './MainContainer';
 import Dashboard from '../components/Dashboard/Dashboard'
 import {useStyles} from '../styles/styles';
 
-export default function App() {
+export default function AppContainer() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
-    const myRef = useRef(null);
 
     const handleDrawerOpen = () => {
       setOpen(true);

@@ -3,7 +3,7 @@ import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import {es} from 'date-fns/esm/locale'
 
-function InlineDatePickerDemo(props) {
+function FullDatePicker(props) {
   const {helperText, date} = props;
   const [selectedDate, handleDateChange] = useState(date);
 
@@ -25,4 +25,4 @@ function InlineDatePickerDemo(props) {
   );
 }
 
-export default InlineDatePickerDemo;
+export default FullDatePicker;

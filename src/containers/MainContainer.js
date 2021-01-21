@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from "react-router-dom";
-import FSR from './stats/FSRContainer';
+import FSR from './stats/FLRContainer';
 import Escalation from './stats/EscalationContainer';
 import ResolutionTime from './stats/ResolutionTimeContainer';
 import ThemeContainer from './Theme/ThemeContainer'
@@ -136,13 +136,13 @@ export default function MainContainer() {
 
     useEffect(() => {
 
-        const calculateAverageTime = (config) => {
+        const calculateAverageTime = (data) => {
             //arr.reduce(callback(acumulador, valorActual[, índice[, array]])[, valorInicial])
 
             //recent emails
             let recent = 0;
 
-            const average = config.reduce((acc, email) => {
+            const average = data.reduce((acc, email) => {
                 const emailDate = new Date(email.date).getTime();
 
                 if (emailDate > fromDate && emailDate < toDate) {

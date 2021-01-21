@@ -10,7 +10,7 @@ import Emails from '../../components/Emails/Emails';
 import Copyright from '../../components/Copyright/Copyright';
 import {useStyles} from '../../styles/styles';
 
-export default function FirstLevelResolution(props) {
+export default function FLRContainer(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     const {data} = props;

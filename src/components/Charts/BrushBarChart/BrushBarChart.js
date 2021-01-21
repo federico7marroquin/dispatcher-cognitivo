@@ -1,12 +1,8 @@
 import React, { PureComponent } from 'react';
-import {
-  BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
-} from 'recharts';
-import Title from '../../Title/Title';
+import {BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 
 
-
-export default class Example extends PureComponent {
+export default class BrushBarChart extends PureComponent {
 
   render() {
     const {data, onChange} = this.props;
@@ -20,7 +16,6 @@ export default class Example extends PureComponent {
 
     return (
         <React.Fragment>
-            {/* <Title>Histórico mes</Title> */}
             <ResponsiveContainer >
               <BarChart
                   width={1100}

@@ -46,7 +46,7 @@ function union(a, b) {
 }
 
 
-export default function TransferList(props) {
+export default function TypologyList(props) {
     const classes = useStyles();
     const [checked, setChecked] = React.useState([]);
     const [left, setLeft] = React.useState([0, 1, 2, 3]);
