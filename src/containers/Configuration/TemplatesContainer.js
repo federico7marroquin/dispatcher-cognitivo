@@ -6,38 +6,36 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import MailBox from '../../components/MailBox/MailBox';
-import Table from '../../components/Templates/GenericTable';
+import Table from '../../components/Table/GenericTable';
 import FormDialog from '../../components/FormDialog/FormDialog';
 import TemplateDialog from '../../components/TemplateDialog/TemplateDialog';
 
 const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Nombre ' },
-    { id: 'calories', numeric: true, disablePadding: false, label: 'Tipología' },
-    { id: 'fat', numeric: true, disablePadding: false, label: 'Asunto' },
-    { id: 'carbs', numeric: true, disablePadding: false, label: 'Descripción' },
-    { id: 'protein', numeric: true, disablePadding: false, label: 'Fecha' },
+    { id: 'name', disablePadding: true, label: 'Nombre ' },
+    { id: 'typologies', disablePadding: false, label: 'Tipología' },
+    { id: 'subject', disablePadding: false, label: 'Asunto' },
+    { id: 'description', disablePadding: false, label: 'Descripción' },
+    { id: 'state', disablePadding: false, label: 'Estado' },
 ];
 
-function createData(name, calories, fat, carbs, protein, body) {
-    return { name, calories, fat, carbs, protein, body };
-}
+
 
 //name, typologies, subject, description, date, body, state
-function createTemplate(name, typologies, subject, description, date, body, state) {
-    return { name, typologies, subject, description, date, body, state };
+function createTemplate(name, typologies, subject, description, state, date, body ) {
+    return { name, typologies, subject, description, state, date, body };
 }
 const rows = [
-    createData('Consultas pqr', 'PRQS', 'Peticiónes', 'Descripción...', '2 Ene. 2021' , 'este es un body'),
-    createData('Solicitudes de info', 'Solicitud de información', 'Solicitudes', 'Descripción...', '22 Dic. 2020', 'este es un body'),
-    createData('Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', '20 Dic. 2020',  'este es un body'),
-    createData('Tutelas', 'Autorización', 'Proceso de autorización', ' Descripción...', '15 Nov. 2020', 'este es un body'),
-    createData('En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', '15 Nov. 2020', 'este es un body'),
-    createData('1Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', '20 Dic. 2020', 'este es un body'),
-    createData('2Tutelas', 'Autorización', 'Proceso de autorización', ' Descripción...', '15 Nov. 2020', 'este es un body'),
-    createData('3En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', '15 Nov. 2020', 'este es un body'),
-    createData('4Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', '20 Dic. 2020', 'este es un body'),
-    createData('5Tutelas', 'Autorización', 'Proceso de autorización', ' Descripción...', '15 Nov. 2020', 'este es un body'),
-    createData('6En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', '15 Nov. 2020', 'este es un body'),
+    createTemplate('Consultas pqr', 'PRQS', 'Peticiónes', 'Descripción...', 'borrador', '2 Ene. 2021' , 'este es un body'),
+    createTemplate('Solicitudes de info', 'Solicitud de información', 'Solicitudes', 'Descripción...', 'unico','22 Dic. 2020', 'este es un body'),
+    createTemplate('Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020',  'este es un body'),
+    createTemplate('Tutelas', 'Autorización', 'Proceso de autorización', ' Descripción...', 'variante','15 Nov. 2020', 'este es un body'),
+    createTemplate('En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'unico','15 Nov. 2020', 'este es un body'),
+    createTemplate('certificados', 'Certificados', 'Autoridad', 'Descripción...', 'borrador','20 Dic. 2020', 'este es un body'),
+    createTemplate('Desarrollo funcionalidad', 'Autorización', 'Proceso de autorización', ' Descripción...', 'unico','15 Nov. 2020', 'este es un body'),
+    createTemplate('Navidades', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'Borrador','15 Nov. 2020', 'este es un body'),
+    createTemplate('Aniversario', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020', 'este es un body'),
+    createTemplate('Promociones', 'Autorización', 'Proceso de autorización', ' Descripción...', 'borrador','15 Nov. 2020', 'este es un body'),
+    createTemplate('Pruebas', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'variante','15 Nov. 2020', 'este es un body'),
 ];
 
 
@@ -51,6 +49,7 @@ export default function TemplatesContainer(props) {
     const [rules, setRules] = useState('');
     const [alreadyCreated, setAlreadyCreated] = useState(false);
     const {typologies} = props;
+    const [template, setTemplate] = useState({});
 
     const myRef = useRef(null);
 
@@ -82,9 +81,12 @@ export default function TemplatesContainer(props) {
 
     //Se necesita terminar TO DO
     const setTemplateToEdit = (item) => {
-        setSubject(item)
-        setBody(item.body)
-        setSelectedTyp(item.typologies)
+        // setSubject(item)
+        // setBody(item.body)
+        // setSelectedTyp(item.typologies)
+        // console.log('item', item);
+        setTemplate(item);
+        executeScroll();
         
     }
     
@@ -93,7 +95,7 @@ export default function TemplatesContainer(props) {
         const year = new Intl.DateTimeFormat('es', {year: 'numeric' }).format(date);
         const month = new Intl.DateTimeFormat('es', {month: 'short' }).format(date);
         const day = new Intl.DateTimeFormat('es', {day: '2-digit' }).format(date);
-        const template = createData(name, rules, subject, description, ` ${day} ${month} ${year}`, body );
+        const template = createTemplate(name, rules, subject, description, 'Borrador',` ${day} ${month} ${year}`, body );
         setSubject('');
         setBody('');
         setRules('')
@@ -120,6 +122,10 @@ export default function TemplatesContainer(props) {
                                     handleClicktypOpen={handleClicktypOpen}
                                     selectedTyp = {selectedTyp}
                                     setSelectedTyp={setSelectedTyp}
+
+                                    //Edit template
+                                    template={template}
+
                                 />
                             </Paper>
                         </Grid>
@@ -129,8 +135,9 @@ export default function TemplatesContainer(props) {
                                     title='Plantillas'
                                     headCells={headCells}
                                     values={rows}
-                                    executeScroll={executeScroll}
-                                    setTemplateToEdit={setTemplateToEdit}
+                                    defaultOrder ='name'
+                                    initRowsPerPage={5}
+                                    setItem={setTemplateToEdit}
                                 />
                             </Paper>
                         </Grid>
@@ -153,6 +160,8 @@ export default function TemplatesContainer(props) {
                     //open and close dialog mechanism
                     open={templateOpen}
                     handleClose ={handleCloseTemplate}
+                    //Edit template
+                    template={template}
                 />
 
         </main>

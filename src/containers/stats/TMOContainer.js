@@ -50,10 +50,10 @@ export default function TMOContainer(props) {
                     <Grid item xs={12} md={4} lg={4}>
                         <Paper className={fixedHeightPaper}>
                             <Stats 
-                                title={type1? type1.title:"Resolución en Primer Nivel"} 
+                                title={type1?.title??"Resolución en Primer Nivel"} 
                                 date="Noviembre 2020" 
-                                quantity={type1? type1.quantity:"7336" }
-                                time={type1? type1.time:"31 Segundos"} 
+                                quantity={type1?.quantity??"7336" }
+                                time={type1?.time??"31 Segundos"} 
                                 route={false}
                                 />
                         </Paper>
@@ -62,10 +62,10 @@ export default function TMOContainer(props) {
                      <Grid item xs={12} md={4} lg={4}>
                         <Paper className={fixedHeightPaper}>
                             <Stats 
-                                title={type2? type2.title:"Escalados"} 
+                                title={type2?.title??"Escalados"} 
                                 date="Noviembre 2020" 
-                                quantity={type2? type2.quantity:"3911" }
-                                time={type2? type2.time:"1 Hora con 26 Minutos y 6 Segundos"} 
+                                quantity={type2?.quantity??"3911" }
+                                time={type2?.time??"1 Hora con 26 Minutos y 6 Segundos"} 
                                 route={false}
                                 />
                         </Paper>
@@ -74,10 +74,10 @@ export default function TMOContainer(props) {
                      <Grid item xs={12} md={4} lg={4}>
                         <Paper className={fixedHeightPaper}>
                             <Stats 
-                                title={total? total.title:"Prioritarios" }
+                                title={total?.title??"Prioritarios" }
                                 date="Noviembre 2020"
-                                quantity={total? total.quantity: 3716}
-                                time={total? total.time:'36 Horas con 17 Minutos y 33 Segundos'}
+                                quantity={total?.quantity??3716}
+                                time={total?.time??'36 Horas con 17 Minutos y 33 Segundos'}
                                 route={false}
                                 />
                         </Paper>

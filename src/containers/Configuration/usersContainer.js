@@ -7,31 +7,31 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import Table from '../../components/Templates/GenericTable';
+import Table from '../../components/Table/GenericTable';
 
 const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'ID' },
-    { id: 'calories', numeric: true, disablePadding: false, label: 'Nombre' },
-    { id: 'fat', numeric: true, disablePadding: false, label: 'Correo' },
-    { id: 'carbs', numeric: true, disablePadding: false, label: 'Rol' },
-    { id: 'protein', numeric: true, disablePadding: false, label: 'Último Ingreso' },
+    { id: 'name',  disablePadding: false, label: 'Nombre' },
+    { id: 'email',  disablePadding: false, label: 'Correo' },
+    { id: 'role',  disablePadding: false, label: 'Rol' },
+    { id: 'entry', disablePadding: false, label: 'Último Ingreso' },
 ];
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+
+function createUser( name, email, role, entry) {
+    return {  name, email, role, entry };
 }
 const rows = [
-    createData('0', 'Sandra Diaz', 'sdias@be-prosolutions.com', 'Administrador', '18 Ene, 2021'),
-    createData('1', 'simon bolivar', 'sbolivar@be-prosolutions.com', 'Escritor', '10 Ene, 2021'),
-    createData('2', 'Asesor', 'asesor@be-prosolutions.com', 'Lector', '20 Dic, 2020'),
-    createData('3', 'Legoshi', 'Legoshi@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
-    createData('4', 'Hannibal Lecter', 'hannibal@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
-    createData('5', 'Mikasa ackerman', 'ackerman@be-prosolutions.com', 'Administrador', '10 Ene, 2021'),
-    createData('6', 'Wanda Maximoff', 'wmaximoff@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
-    createData('7', 'Pedro Pascal', 'ppascal@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
-    createData('8', 'Din Djarin', 'dindjarin@be-prosolutions.com', 'Administrador', '4 Ene, 2021'),
-    createData('9', 'Edwin Smith', 'edsmith@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
-    createData('10', 'Rigoberto Uran', 'Uran@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
+    createUser( 'Sandra Diaz', 'sdias@be-prosolutions.com', 'Administrador', '18 Ene, 2021'),
+    createUser( 'simon bolivar', 'sbolivar@be-prosolutions.com', 'Escritor', '10 Ene, 2021'),
+    createUser( 'Asesor', 'asesor@be-prosolutions.com', 'Lector', '20 Dic, 2020'),
+    createUser( 'Legoshi', 'Legoshi@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
+    createUser( 'Hannibal Lecter', 'hannibal@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
+    createUser( 'Mikasa ackerman', 'ackerman@be-prosolutions.com', 'Administrador', '10 Ene, 2021'),
+    createUser( 'Wanda Maximoff', 'wmaximoff@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
+    createUser( 'Pedro Pascal', 'ppascal@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
+    createUser( 'Din Djarin', 'dindjarin@be-prosolutions.com', 'Administrador', '4 Ene, 2021'),
+    createUser( 'Edwin Smith', 'edsmith@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
+    createUser( 'Rigoberto Uran', 'Uran@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
 ];
 
 
@@ -52,9 +52,11 @@ export default function UsersContainer(props) {
                         <Paper className={classes.paperMail}>
                             <Table
                                 title='Usuarios'
-                                usuarios={true}
                                 headCells={headCells}
                                 values={rows}    
+                                defaultOrder ='name'
+                                initRowsPerPage={10}
+                                addFunction = "Agregar Usuarios"
                             />
                         </Paper>
                     </Grid>

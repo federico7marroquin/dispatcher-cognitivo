@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -31,7 +31,7 @@ const stateInfo =
 
 export default function TemplateDialog(props) {
 
-    const { handleClose, createTemplate, open } = props;
+    const { handleClose, createTemplate, open, template } = props;
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [state, setState] = useState('unico');
@@ -66,9 +66,23 @@ export default function TemplateDialog(props) {
         handleClose()
     }
 
+    useEffect(()=> {
+        if(template && template.name && template.state){
+            setName(template.name);
+            setDescription(template.description? template.description: '');
+            setState(template.state);
+        }
+    },[template]);
+
 
     return (
-        <Dialog maxWidth='xs' open={open} fullScreen={fullScreen} onClose={closeDialog} aria-labelledby='form-dialog-title'>
+        <Dialog 
+            maxWidth='xs' 
+            open={open} 
+            fullScreen={fullScreen} 
+            onClose={closeDialog} 
+            aria-labelledby='form-dialog-title'
+        >
             <DialogTitle id="form-dialog-title">Crear Plantilla</DialogTitle>
             <DialogContent>
                 <DialogContentText>

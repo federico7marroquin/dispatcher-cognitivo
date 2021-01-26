@@ -27,7 +27,16 @@ import Grid from '@material-ui/core/Grid';
 
 
 export default function MailBox(props) {
-    const { handleClicktypOpen, selectedTyp, setSelectedTyp, createTemplate, alreadyCreated, parentSubject, parentBody } = props;
+    const { 
+        handleClicktypOpen, 
+        selectedTyp, 
+        setSelectedTyp, 
+        createTemplate, 
+        alreadyCreated, 
+        parentSubject, 
+        parentBody, 
+        template
+    } = props;
     // const []
 
     const [subject, setSubject] = useState(parentSubject);
@@ -41,7 +50,12 @@ export default function MailBox(props) {
             setBodyTemplate('');
             setPushed(false);
         }
-    }, [alreadyCreated, setSelectedTyp])
+        if(template && template.subject && template.body && template.typologies ){
+            setSubject(template.subject);
+            setBodyTemplate(template.body);
+            setSelectedTyp(template.typologies.split(', '))
+        }
+    }, [alreadyCreated, setSelectedTyp, template])
 
     const handleSaveTamplate = () => {
         if (subject !== '' && selectedTyp.length > 0) {
