@@ -11,7 +11,7 @@ import propTypes from 'prop-types';
 DialogField.propTypes = {
     state: propTypes.string.isRequired,
     name: propTypes.string.isRequired,
-    infoCard: propTypes.string.isRequired,
+    infoCard: propTypes.any.isRequired,
     pushed: propTypes.bool,
 }
 

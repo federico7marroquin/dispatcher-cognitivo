@@ -42,6 +42,7 @@ export default function UsersContainer(props) {
     const classes = useStyles();
     const [openDialog, setOpenDialog] = useState(false);
     const [openEditDialog, setOpenEditDialog] = useState(false);
+    const [filterRows, setFilterRows] = useState(rows);
     const [user, setUser] = useState({});
 
     const handleOpenDialog = () => {
@@ -77,20 +78,25 @@ export default function UsersContainer(props) {
     const editUser = ({ name, email, role, id }) => {
         const entry = setActualDate();
         const newUser = createUser(name, email, role, entry, id);
-        // const tempUser = rows.filter((user, index) => user.id === id)
-        // tempUser.name= newUser.name;
-        // tempUser.email=newUser.email;
-        // tempUser.role=newUser.role;
-        // tempUser.entry= newUser.entry;
-
+        const newRows = filterRows.map(user=> user.id===id? newUser : user)
         rows.splice(newUser.id, 1, newUser);
-        // rows.push(newUser);
-        console.table(rows);
+        setFilterRows(newRows);
+        console.table(newRows);
     }
 
     const displayUser = (tempUser) => {
         setUser(tempUser);
         handleOpenEditDialog();
+    }
+
+    const searchUser = (value) => {
+        if(value===''){
+            setFilterRows(rows);
+        }
+        else{
+            let filtered = rows.filter(user => user.name.toLowerCase().includes(value.toLowerCase()));
+            setFilterRows(filtered)
+        }
     }
 
 
@@ -100,14 +106,16 @@ export default function UsersContainer(props) {
             <Container maxWidth="lg" className={classes.container} >
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <SearchBar />
+                        <SearchBar 
+                            searchFunction={searchUser}
+                        />
                     </Grid>
                     <Grid item xs={12}>
                         <Paper className={classes.paperMail}>
                             <Table
                                 title="Usuarios"
                                 headCells={headCells}
-                                values={rows}
+                                values={filterRows}
                                 defaultOrder="name"
                                 initRowsPerPage={10}
                                 setItem={displayUser}

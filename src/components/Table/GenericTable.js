@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -45,7 +45,6 @@ export default function GenericTable(props) {
         setItem,
         defaultOrder,
         addFunction,
-        editFunction,
     } = props;
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState(defaultOrder);
@@ -54,6 +53,9 @@ export default function GenericTable(props) {
     const [rows, setRows] = React.useState(values);
     const [rowsPerPage, setRowsPerPage] = React.useState(initRowsPerPage);
 
+    useEffect(() => {
+        setRows(values);
+    }, [values])
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';

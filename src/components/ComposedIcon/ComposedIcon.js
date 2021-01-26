@@ -6,7 +6,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import propTypes from 'prop-types';
 
 ComposedIcon.propTypes = {
-    infoCard: propTypes.string,
+    infoCard: propTypes.any,
     state: propTypes.string,
     pushed: propTypes.bool,
     placement: propTypes.string,
