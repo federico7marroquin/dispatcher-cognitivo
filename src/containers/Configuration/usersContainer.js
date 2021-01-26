@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStyles } from '../../styles/styles';
 
 import Copyright from '../../components/Copyright/Copyright';
@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Table from '../../components/Table/GenericTable';
 
+import UserDialog from '../../components/UserDialog/UserDialog';
+
 const headCells = [
     { id: 'name',  disablePadding: false, label: 'Nombre' },
     { id: 'email',  disablePadding: false, label: 'Correo' },
@@ -17,7 +19,7 @@ const headCells = [
 ];
 
 
-function createUser( name, email, role, entry) {
+function createUser( name, email, role, entry='18 Ene, 2021') {
     return {  name, email, role, entry };
 }
 const rows = [
@@ -38,6 +40,34 @@ const rows = [
 
 export default function UsersContainer(props) {
     const classes = useStyles();
+    const [ openDialog, setOpenDialog] = useState(false);
+
+    const handleOpenDialog = () => {
+        setOpenDialog(true);
+    };
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    };
+
+    const setActualDate = () => {
+        const date = new Date();
+        const year = new Intl.DateTimeFormat('es', {year: 'numeric' }).format(date);
+        const month = new Intl.DateTimeFormat('es', {month: 'short' }).format(date);
+        const day = new Intl.DateTimeFormat('es', {day: '2-digit' }).format(date);
+        return `${day} ${month} ${year}`
+    }
+
+    const addUser = ({ name, email, role}) => {
+        const entry = setActualDate();
+        const newUser = createUser(name, email, role, entry);
+        rows.push(newUser);
+        console.table(rows);
+    }
+
+    const editUser = () => {
+        alert('edit user');
+    }
 
 
     return (
@@ -51,12 +81,12 @@ export default function UsersContainer(props) {
                     <Grid item xs={12}>
                         <Paper className={classes.paperMail}>
                             <Table
-                                title='Usuarios'
+                                title="Usuarios"
                                 headCells={headCells}
                                 values={rows}    
-                                defaultOrder ='name'
+                                defaultOrder="name"
                                 initRowsPerPage={10}
-                                addFunction = "Agregar Usuarios"
+                                addFunction={handleOpenDialog}
                             />
                         </Paper>
                     </Grid>
@@ -65,6 +95,14 @@ export default function UsersContainer(props) {
                     <Copyright />
                 </Box>
             </Container>
+            <UserDialog
+                title="Crear usuario"
+                description="Se creará una nuevo usuario con los valores diligenciados a continuación."
+                buttonLabe="Crear"
+                open={openDialog}
+                handleClose={handleCloseDialog}
+                handleAction={addUser}
+            />
         </main>
     );
 }

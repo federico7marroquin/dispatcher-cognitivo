@@ -240,7 +240,6 @@ export default function GenericTable(props) {
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onChangePage={handleChangePage}
-                // labelRowsPerPage={esES}
                 onChangeRowsPerPage={handleChangeRowsPerPage}
             />
         </div>

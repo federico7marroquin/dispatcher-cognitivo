@@ -74,8 +74,11 @@ export default function EnhancedTableToolbar(props){
             ) :
                 addFunction &&
                 (
-                    <Tooltip title={addFunction}>
-                        <IconButton aria-label="filter list">
+                    <Tooltip title="Crear">
+                        <IconButton  
+                            aria-label="filter list"
+                            onClick={addFunction}
+                            >
                             <AddIcon />
                         </IconButton>
                     </Tooltip>
