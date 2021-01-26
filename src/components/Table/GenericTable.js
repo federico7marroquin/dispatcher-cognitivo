@@ -44,7 +44,8 @@ export default function GenericTable(props) {
         initRowsPerPage,
         setItem,
         defaultOrder,
-        addFunction
+        addFunction,
+        editFunction,
     } = props;
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState(defaultOrder);
@@ -69,6 +70,7 @@ export default function GenericTable(props) {
             }
         }
         console.log('definitivo', item)
+        // editFunction && editFunction();
         setItem(item);
     }
     const deleteItem = () => {
@@ -106,7 +108,6 @@ export default function GenericTable(props) {
 
         if (selectedIndex === -1) {
 
-
             newSelected = newSelected.concat(selected, row[arrayRow[0]]);
 
         } else if (selectedIndex === 0) {
@@ -115,20 +116,15 @@ export default function GenericTable(props) {
 
         } else if (selectedIndex === selected.length - 1) {
 
-
             newSelected = newSelected.concat(selected.slice(0, -1));
 
         } else if (selectedIndex > 0) {
-
 
             newSelected = newSelected.concat(
                 selected.slice(0, selectedIndex),
                 selected.slice(selectedIndex + 1),
             );
         }
-
-
-        
         setSelected(newSelected);
     };
 

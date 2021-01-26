@@ -2,10 +2,9 @@ import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+
+import ComposedIcon from '../ComposedIcon/ComposedIcon';
 
 import propTypes from 'prop-types';
 
@@ -36,19 +35,12 @@ export default function DialogField(props) {
                     {name}
                 </Typography>
                 <Box ml={1}>
-                    <Tooltip
-                        arrow
-                        fontSize={40}
-                        title={infoCard}
-                        placement="right"
-                    >
-                        <IconButton size="small">
-                            <InfoOutlinedIcon
-                                color={state === '' && pushed ? 'error' : 'inherit'}
-                                fontSize="small"
-                            />
-                        </IconButton>
-                    </Tooltip>
+                    <ComposedIcon
+                        infoCard={infoCard}
+                        state={state}
+                        pushed={pushed}
+                        placement='right'
+                    />
                 </Box>
             </Grid>
             {children}

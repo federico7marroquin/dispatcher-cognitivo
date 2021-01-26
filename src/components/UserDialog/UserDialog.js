@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -18,6 +18,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import DialogField from '../DialogField/DialogField';
+import Grid from '@material-ui/core/Grid';
+
+import ComposedIcon from '../ComposedIcon/ComposedIcon';
 
 const nameInfo = 'Nombre de usuario';
 const emailInfo = 'Correo electrónico del usuario, necesario para ingresar en el aplicativo';
@@ -26,25 +29,29 @@ const passwordInfo = 'Contraseña de usuario. necesaria para ingresar en el apli
 const confirmPasswordInfo = 'Las contraseñas deben concidir';
 
 UserDialog.propTypes = {
-    title: propTypes.string.isRequired,
-    description: propTypes.string.isRequired,
-    buttonLabel: propTypes.string.isRequired,
+    title: propTypes.string,
+    description: propTypes.string,
+    buttonLabel: propTypes.string,
     open: propTypes.bool.isRequired,
     handleClose: propTypes.func.isRequired,
     handleAction: propTypes.func.isRequired,
+    userData: propTypes.object,
+    editDialog: propTypes.bool
 }
 
 UserDialog.defaultProps = {
     title: 'Crear usuario',
     description: 'Se creará una nuevo usuario con los valores diligenciados a continuación.',
     buttonLabel: 'Crear',
-    open: true,
+    userData: {},
+    editDialog: false,
 }
 
 export default function UserDialog(props) {
 
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const { title, description, buttonLabel, open, handleClose, handleAction, userData, editDialog } = props;
 
     const [pushed, setPushed] = useState(false);
     const [name, setName] = useState('');
@@ -52,9 +59,20 @@ export default function UserDialog(props) {
     const [role, setRole] = useState('Lector');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [disabledFields, setDisabledFields] = useState([
+        true, true, true, true
+    ])
 
-    const { title, description, buttonLabel, open, handleClose, handleAction } = props;
+    useEffect(() => {
+        console.log('userData', userData);
+            setValues(userData);
+    }, [userData] )
 
+    const setValues = (editUser) => {
+        setName(editUser?.name??'');
+        setEmail(editUser?.email??'');
+        setRole(editUser?.role??'');
+    }
     const resetValues = () => {
         setName('');
         setEmail('');
@@ -73,12 +91,24 @@ export default function UserDialog(props) {
     const executeAction = () => {
         if (name !== '' && email !== '' && password !== '' && confirmPassword !== '') {
             closeDialog()
-            handleAction({ name, email, role });
+            if(editDialog){
+                handleAction({ name, email, role, id: userData.id});
+            }
+            else{
+                handleAction({ name, email, role, id:11});
+            }
         }
         else {
             if (!pushed)
                 setPushed(true);
         }
+    }
+
+    const allowField = (index) => {
+        const tempDisabbledFields = [...disabledFields]
+        tempDisabbledFields[index] = false
+        setDisabledFields(tempDisabbledFields);
+        console.table(disabledFields);
     }
 
     return (
@@ -100,12 +130,29 @@ export default function UserDialog(props) {
                             name="Nombre"
                             infoCard={nameInfo}
                         >
-                            <TextField
-                                error={name === '' && pushed}
-                                onChange={e => setName(e.target.value)}
-                                value={name}
-                                fullWidth
-                            />
+                            <Grid
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="center"
+                                spacing={2}
+                            >
+                                <Grid item xs={editDialog ? 11 : 12}>
+                                    <TextField
+                                        disabled={disabledFields[0] && editDialog}
+                                        error={name === '' && pushed}
+                                        onChange={e => setName(e.target.value)}
+                                        value={name}
+                                        fullWidth
+                                    />
+                                </Grid>
+                                {editDialog &&
+                                    <Grid item xs={1}>
+                                        <ComposedIcon
+                                            handlePush={() => allowField(0)}
+                                        />
+                                    </Grid>}
+                            </Grid>
                         </DialogField>
                     </Box>
                     <Box mb={3}>
@@ -115,12 +162,29 @@ export default function UserDialog(props) {
                             name="Correo Electrónico"
                             infoCard={emailInfo}
                         >
-                            <TextField
-                                error={email === '' && pushed}
-                                onChange={e => setEmail(e.target.value)}
-                                value={email}
-                                fullWidth
-                            />
+                            <Grid
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="center"
+                                spacing={2}
+                            >
+                                <Grid item xs={editDialog ? 11 : 12}>
+                                    <TextField
+                                        disabled={disabledFields[1] && editDialog}
+                                        error={email === '' && pushed}
+                                        onChange={e => setEmail(e.target.value)}
+                                        value={email}
+                                        fullWidth
+                                    />
+                                </Grid>
+                                {editDialog &&
+                                    <Grid item xs={1}>
+                                        <ComposedIcon
+                                            handlePush={() => allowField(1)}
+                                        />
+                                    </Grid>}
+                            </Grid>
                         </DialogField>
                     </Box>
                     <Box mb={3}>
@@ -129,18 +193,38 @@ export default function UserDialog(props) {
                             name="Rol"
                             infoCard={roleInfo}
                         >
-                            <FormControl fullWidth>
-                                <Select
-                                    labelId="demo-simple-select-error-label"
-                                    id="demo-simple-select-error"
-                                    value={role}
-                                    onChange={e => setRole(e.target.value)}
-                                >
-                                    <MenuItem value="Lector">Lector</MenuItem>
-                                    <MenuItem value="Editor">Editor</MenuItem>
-                                    <MenuItem value="Administrador">Administrador</MenuItem>
-                                </Select>
-                            </FormControl>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="center"
+                                spacing={2}
+                            >
+                                <Grid item xs={editDialog ? 11 : 12}>
+                                    <FormControl
+                                        fullWidth
+                                        disabled={disabledFields[2] && editDialog}
+                                    >
+                                        <Select
+                                            labelId="demo-simple-select-error-label"
+                                            id="demo-simple-select-error"
+                                            value={role}
+                                            onChange={e => setRole(e.target.value)}
+                                        >
+                                            <MenuItem value="Lector">Lector</MenuItem>
+                                            <MenuItem value="Escritor">Editor</MenuItem>
+                                            <MenuItem value="Administrador">Administrador</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                {editDialog &&
+                                    <Grid item xs={1}>
+                                        <ComposedIcon
+                                            handlePush={() => allowField(2)}
+                                        />
+                                    </Grid>
+                                }
+                            </Grid>
                         </DialogField>
                     </Box>
                     <Box mb={3}>

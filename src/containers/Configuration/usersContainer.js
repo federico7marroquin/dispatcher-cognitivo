@@ -12,35 +12,37 @@ import Table from '../../components/Table/GenericTable';
 import UserDialog from '../../components/UserDialog/UserDialog';
 
 const headCells = [
-    { id: 'name',  disablePadding: false, label: 'Nombre' },
-    { id: 'email',  disablePadding: false, label: 'Correo' },
-    { id: 'role',  disablePadding: false, label: 'Rol' },
+    { id: 'name', disablePadding: true, label: 'Nombre' },
+    { id: 'email', disablePadding: false, label: 'Correo' },
+    { id: 'role', disablePadding: false, label: 'Rol' },
     { id: 'entry', disablePadding: false, label: 'Último Ingreso' },
 ];
 
 
-function createUser( name, email, role, entry='18 Ene, 2021') {
-    return {  name, email, role, entry };
+function createUser(name, email, role, entry = '18 Ene, 2021', id) {
+    return { name, email, role, entry, id };
 }
 const rows = [
-    createUser( 'Sandra Diaz', 'sdias@be-prosolutions.com', 'Administrador', '18 Ene, 2021'),
-    createUser( 'simon bolivar', 'sbolivar@be-prosolutions.com', 'Escritor', '10 Ene, 2021'),
-    createUser( 'Asesor', 'asesor@be-prosolutions.com', 'Lector', '20 Dic, 2020'),
-    createUser( 'Legoshi', 'Legoshi@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
-    createUser( 'Hannibal Lecter', 'hannibal@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
-    createUser( 'Mikasa ackerman', 'ackerman@be-prosolutions.com', 'Administrador', '10 Ene, 2021'),
-    createUser( 'Wanda Maximoff', 'wmaximoff@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
-    createUser( 'Pedro Pascal', 'ppascal@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
-    createUser( 'Din Djarin', 'dindjarin@be-prosolutions.com', 'Administrador', '4 Ene, 2021'),
-    createUser( 'Edwin Smith', 'edsmith@be-prosolutions.com', 'Escritor', '15 Nov, 2020'),
-    createUser( 'Rigoberto Uran', 'Uran@be-prosolutions.com', 'Lector', '15 Nov, 2020'),
+    createUser('Sandra Diaz', 'sdias@be-prosolutions.com', 'Administrador', '18 Ene, 2021', 0),
+    createUser('simon bolivar', 'sbolivar@be-prosolutions.com', 'Escritor', '10 Ene, 2021', 1),
+    createUser('Asesor', 'asesor@be-prosolutions.com', 'Lector', '20 Dic, 2020', 2),
+    createUser('Legoshi', 'Legoshi@be-prosolutions.com', 'Escritor', '15 Nov, 2020', 3),
+    createUser('Hannibal Lecter', 'hannibal@be-prosolutions.com', 'Lector', '15 Nov, 2020', 4),
+    createUser('Mikasa ackerman', 'ackerman@be-prosolutions.com', 'Administrador', '10 Ene, 2021', 5),
+    createUser('Wanda Maximoff', 'wmaximoff@be-prosolutions.com', 'Escritor', '15 Nov, 2020', 6),
+    createUser('Pedro Pascal', 'ppascal@be-prosolutions.com', 'Lector', '15 Nov, 2020', 7),
+    createUser('Din Djarin', 'dindjarin@be-prosolutions.com', 'Administrador', '4 Ene, 2021', 8),
+    createUser('Edwin Smith', 'edsmith@be-prosolutions.com', 'Escritor', '15 Nov, 2020', 9),
+    createUser('Rigoberto Uran', 'Uran@be-prosolutions.com', 'Lector', '15 Nov, 2020', 10),
 ];
 
 
 
 export default function UsersContainer(props) {
     const classes = useStyles();
-    const [ openDialog, setOpenDialog] = useState(false);
+    const [openDialog, setOpenDialog] = useState(false);
+    const [openEditDialog, setOpenEditDialog] = useState(false);
+    const [user, setUser] = useState({});
 
     const handleOpenDialog = () => {
         setOpenDialog(true);
@@ -50,23 +52,45 @@ export default function UsersContainer(props) {
         setOpenDialog(false);
     };
 
+    const handleOpenEditDialog = () => {
+        setOpenEditDialog(true);
+    }
+    const handleCloseEditDialog = () => {
+        setOpenEditDialog(false);
+    };
+
     const setActualDate = () => {
         const date = new Date();
-        const year = new Intl.DateTimeFormat('es', {year: 'numeric' }).format(date);
-        const month = new Intl.DateTimeFormat('es', {month: 'short' }).format(date);
-        const day = new Intl.DateTimeFormat('es', {day: '2-digit' }).format(date);
+        const year = new Intl.DateTimeFormat('es', { year: 'numeric' }).format(date);
+        const month = new Intl.DateTimeFormat('es', { month: 'short' }).format(date);
+        const day = new Intl.DateTimeFormat('es', { day: '2-digit' }).format(date);
         return `${day} ${month} ${year}`
     }
 
-    const addUser = ({ name, email, role}) => {
+    const addUser = ({ name, email, role, id }) => {
         const entry = setActualDate();
-        const newUser = createUser(name, email, role, entry);
+        const newUser = createUser(name, email, role, entry, id);
         rows.push(newUser);
         console.table(rows);
     }
 
-    const editUser = () => {
-        alert('edit user');
+    const editUser = ({ name, email, role, id }) => {
+        const entry = setActualDate();
+        const newUser = createUser(name, email, role, entry, id);
+        // const tempUser = rows.filter((user, index) => user.id === id)
+        // tempUser.name= newUser.name;
+        // tempUser.email=newUser.email;
+        // tempUser.role=newUser.role;
+        // tempUser.entry= newUser.entry;
+
+        rows.splice(newUser.id, 1, newUser);
+        // rows.push(newUser);
+        console.table(rows);
+    }
+
+    const displayUser = (tempUser) => {
+        setUser(tempUser);
+        handleOpenEditDialog();
     }
 
 
@@ -83,9 +107,10 @@ export default function UsersContainer(props) {
                             <Table
                                 title="Usuarios"
                                 headCells={headCells}
-                                values={rows}    
+                                values={rows}
                                 defaultOrder="name"
                                 initRowsPerPage={10}
+                                setItem={displayUser}
                                 addFunction={handleOpenDialog}
                             />
                         </Paper>
@@ -96,12 +121,19 @@ export default function UsersContainer(props) {
                 </Box>
             </Container>
             <UserDialog
-                title="Crear usuario"
-                description="Se creará una nuevo usuario con los valores diligenciados a continuación."
-                buttonLabe="Crear"
                 open={openDialog}
                 handleClose={handleCloseDialog}
                 handleAction={addUser}
+            />
+            <UserDialog
+                title='Editar usuario'
+                description="Se cambiarán los datos del usuario con los valores diligenciados a continuación."
+                buttonLabel="Guardar"
+                open={openEditDialog}
+                handleClose={handleCloseEditDialog}
+                handleAction={editUser}
+                userData={user}
+                editDialog
             />
         </main>
     );
