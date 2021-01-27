@@ -1,5 +1,4 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Card from '@material-ui/core/Card';
@@ -12,26 +11,12 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import AddIcon from '@material-ui/icons/Add';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        margin: 'auto',
-    },
-    cardHeader: {
-        padding: theme.spacing(1, 2),
-    },
-    list: {
-        width: "100%",
-        height: 430,
-        backgroundColor: theme.palette.background.paper,
-        overflow: 'auto',
-    },
-    button: {
-        margin: theme.spacing(0.5, 0),
-    },
-    buttonAdd:{
-        margin: theme.spacing(1, 0),
-    },
-}));
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import EditIcon from '@material-ui/icons/Edit';
+
+import { useStyles } from './TypologyStyles';
+
 
 function not(a, b) {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -45,14 +30,13 @@ function union(a, b) {
     return [...a, ...not(b, a)];
 }
 
-
 export default function TypologyList(props) {
     const classes = useStyles();
-    const [checked, setChecked] = React.useState([]);
-    const [left, setLeft] = React.useState([0, 1, 2, 3]);
-    const [middle, setMiddle] = React.useState([9, 10, 11, 12]);
-    const [right, setRight] = React.useState([4, 5, 6, 7]);
-    const {typologies} = props
+    const [checked, setChecked] = useState([]);
+    const [left, setLeft] = useState([0, 1, 2, 3]);
+    const [middle, setMiddle] = useState([9, 10, 11, 12]);
+    const [right, setRight] = useState([4, 5, 6, 7]);
+    const { typologies, handleOpenDialog, setItem } = props
 
     const leftChecked = intersection(checked, left);
     const middleChecked = intersection(checked, middle);
@@ -104,6 +88,7 @@ export default function TypologyList(props) {
         setChecked(not(checked, rightChecked));
 
     }
+
     const customList = (title, items) => (
         <Card>
             <CardHeader
@@ -126,8 +111,13 @@ export default function TypologyList(props) {
                     const labelId = `transfer-list-all-item-${value}-label`;
 
                     return (
-                        <ListItem key={value} role="listitem" button onClick={handleToggle(value)}>
-                            <ListItemIcon>
+                        <ListItem 
+                            key={value} 
+                            role="listitem" 
+                            button 
+                           
+                        >
+                            <ListItemIcon onClick={handleToggle(value)}>
                                 <Checkbox
                                     checked={checked.indexOf(value) !== -1}
                                     tabIndex={-1}
@@ -136,6 +126,14 @@ export default function TypologyList(props) {
                                 />
                             </ListItemIcon>
                             <ListItemText id={labelId} primary={typologies[value]} />
+                            <Tooltip 
+                                placement="top"
+                                title="Editar"
+                            >
+                                <IconButton  size='small' onClick={() => setItem(typologies[value], title )}>
+                                    <EditIcon  fontSize='small'/>
+                                </IconButton>
+                            </Tooltip>
                         </ListItem>
                     );
                 })}
@@ -143,11 +141,13 @@ export default function TypologyList(props) {
             </List>
             {/* <Divider /> */}
             <Grid container alignItems='center' justify="center">
-                <Button 
+                <Button
                     className={classes.buttonAdd}
                     variant="contained"
-                     color="secondary">
-                    <AddIcon/>
+                    color="secondary"
+                    onClick={() => handleOpenDialog(title)}
+                >
+                    <AddIcon />
                 </Button>
             </Grid>
         </Card>
@@ -155,9 +155,16 @@ export default function TypologyList(props) {
 
     return (
         <>
-            <Grid item sm={12} md={3}>{customList('Primer nivel', left)}</Grid>
+            <Grid item sm={12} md={3} style={{width: '100%'}}>
+                {customList('Primer nivel', left)}
+            </Grid>
+
             <Grid item >
-                <Grid container direction="column" alignItems="center">
+                <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                >
                     <Button
                         variant="outlined"
                         size="small"
@@ -167,7 +174,7 @@ export default function TypologyList(props) {
                         aria-label="move selected right"
                     >
                         &gt;
-          </Button>
+                    </Button>
                     <Button
                         variant="outlined"
                         size="small"
@@ -177,10 +184,14 @@ export default function TypologyList(props) {
                         aria-label="move selected left"
                     >
                         &lt;
-          </Button>
+                    </Button>
                 </Grid>
             </Grid>
-            <Grid item xs={12} md={3}>{customList('Escalados', right)}</Grid>
+
+            <Grid item xs={12} md={3}>
+                {customList('Escalados', right)}
+            </Grid>
+
             <Grid item >
                 <Grid container direction="column" alignItems="center">
                     <Button
@@ -192,7 +203,7 @@ export default function TypologyList(props) {
                         aria-label="move selected right"
                     >
                         &gt;
-          </Button>
+                    </Button>
                     <Button
                         variant="outlined"
                         size="small"
@@ -202,10 +213,13 @@ export default function TypologyList(props) {
                         aria-label="move selected left"
                     >
                         &lt;
-          </Button>
+                    </Button>
                 </Grid>
             </Grid>
-            <Grid item xs={12} md={3}>{customList('Prioritarios', middle)}</Grid>
+
+            <Grid item xs={12} md={3}>
+                {customList('Prioritarios', middle)}
+            </Grid>
         </>
     );
 }

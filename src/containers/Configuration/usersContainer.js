@@ -134,7 +134,7 @@ export default function UsersContainer(props) {
                 handleAction={addUser}
             />
             <UserDialog
-                title='Editar usuario'
+                title="Editar usuario"
                 description="Se cambiarán los datos del usuario con los valores diligenciados a continuación."
                 buttonLabel="Guardar"
                 open={openEditDialog}
