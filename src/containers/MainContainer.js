@@ -94,6 +94,7 @@ const Escalationdata = [
 export default function MainContainer() {
     const [formatTime, setFormatTime] = useState(0);
     const [quantity, setQuantity] = useState(0);
+
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const fromDate = new Date("11/1/2020").getTime();
     const toDate = new Date("11/25/2020").getTime();

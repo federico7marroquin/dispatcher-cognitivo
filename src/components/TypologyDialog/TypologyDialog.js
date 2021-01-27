@@ -58,20 +58,13 @@ export default function TypologyDialog(props) {
     const [category, setCategory] = useState('Primer nivel');
     const [descrip, setDescrip] = useState('');
     const [disabledFields, setDisabledFields] = useState(
-        true, true
+        [true, true]
     )
 
     useEffect(() => {
-        if(typeData.typology && typeData.typology!==type){
             setType(typeData.typology)
-        }
-        if(typeData.category && typeData.category!==category){
             setCategory(typeData.category)
-            console.log('TypeData', typeData);
-
-        }
-        // setValues(typeData)
-    }, [typeData, type, category])
+    }, [typeData])
 
     const setValues = ({ typology, category }) => {
         setType(typology ?? '');
@@ -109,6 +102,12 @@ export default function TypologyDialog(props) {
         setDisabledFields(tempDisabledFields);
     }
 
+    const debgunType = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+         setType(e.target.value)
+    }
+
     return (
         <Dialog
             maxWidth="sm"
@@ -139,7 +138,7 @@ export default function TypologyDialog(props) {
                                     <TextField
                                         disabled={disabledFields[0] && editTypology}
                                         error={type === '' && pushed}
-                                        onChange={e => setType(e.target.value)}
+                                        onChange={debgunType }
                                         value={type}
                                         fullWidth
                                     />

@@ -21,21 +21,21 @@ const headCells = [
 
 
 //name, typologies, subject, description, date, body, state
-function createTemplate(name, typologies, subject, description, state, date, body ) {
+function makeTemplate(name, typologies, subject, description, state, date, body ) {
     return { name, typologies, subject, description, state, date, body };
 }
 const rows = [
-    createTemplate('Consultas pqr', 'PRQS', 'Peticiónes', 'Descripción...', 'borrador', '2 Ene. 2021' , tutelas.body),
-    createTemplate('Solicitudes de info', 'Solicitud de información', 'Solicitudes', 'Descripción...', 'unico','22 Dic. 2020', tutelas.body),
-    createTemplate('Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020',  tutelas.body),
-    createTemplate('Tutelas', 'Autorización', 'Tutela', ' Descripción...', 'variante','15 Nov. 2020', tutelas.body),
-    createTemplate('En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'unico','15 Nov. 2020', tutelas.body),
-    createTemplate('certificados', 'Certificados', 'Autoridad', 'Descripción...', 'borrador','20 Dic. 2020', tutelas.body),
-    createTemplate('Desarrollo funcionalidad', 'Autorización', 'Proceso de autorización', ' Descripción...', 'unico','15 Nov. 2020', tutelas.body),
-    createTemplate('Navidades', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'Borrador','15 Nov. 2020', tutelas.body),
-    createTemplate('Aniversario', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020', tutelas.body),
-    createTemplate('Promociones', 'Autorización', 'Proceso de autorización', ' Descripción...', 'borrador','15 Nov. 2020', tutelas.body),
-    createTemplate('Pruebas', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'variante','15 Nov. 2020', tutelas.body),
+    makeTemplate('Consultas pqr', 'PRQS', 'Peticiónes', 'Descripción...', 'borrador', '2 Ene. 2021' , tutelas.body),
+    makeTemplate('Solicitudes de info', 'Solicitud de información', 'Solicitudes', 'Descripción...', 'unico','22 Dic. 2020', tutelas.body),
+    makeTemplate('Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020',  tutelas.body),
+    makeTemplate('Tutelas', 'Autorización', 'Tutela', ' Descripción...', 'variante','15 Nov. 2020', tutelas.body),
+    makeTemplate('En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'unico','15 Nov. 2020', tutelas.body),
+    makeTemplate('certificados', 'Certificados', 'Autoridad', 'Descripción...', 'borrador','20 Dic. 2020', tutelas.body),
+    makeTemplate('Desarrollo funcionalidad', 'Autorización', 'Proceso de autorización', ' Descripción...', 'unico','15 Nov. 2020', tutelas.body),
+    makeTemplate('Navidades', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'Borrador','15 Nov. 2020', tutelas.body),
+    makeTemplate('Aniversario', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020', tutelas.body),
+    makeTemplate('Promociones', 'Autorización', 'Proceso de autorización', ' Descripción...', 'borrador','15 Nov. 2020', tutelas.body),
+    makeTemplate('Pruebas', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'variante','15 Nov. 2020', tutelas.body),
 ];
 
 
@@ -95,7 +95,7 @@ export default function TemplatesContainer(props) {
         const year = new Intl.DateTimeFormat('es', {year: 'numeric' }).format(date);
         const month = new Intl.DateTimeFormat('es', {month: 'short' }).format(date);
         const day = new Intl.DateTimeFormat('es', {day: '2-digit' }).format(date);
-        const template = createTemplate(name, rules, subject, description, 'Borrador',` ${day} ${month} ${year}`, body );
+        const template = makeTemplate(name, rules, subject, description, 'Borrador',` ${day} ${month} ${year}`, body );
         setSubject('');
         setBody('');
         setRules('')
