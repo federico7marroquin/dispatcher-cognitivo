@@ -9,7 +9,7 @@ import MailBox from '../../components/MailBox/MailBox';
 import Table from '../../components/Table/GenericTable';
 import FormDialog from '../../components/FormDialog/FormDialog';
 import TemplateDialog from '../../components/TemplateDialog/TemplateDialog';
-
+import { tutelas } from '../../config/templates';
 const headCells = [
     { id: 'name', disablePadding: true, label: 'Nombre ' },
     { id: 'typologies', disablePadding: false, label: 'Tipología' },
@@ -25,17 +25,17 @@ function createTemplate(name, typologies, subject, description, state, date, bod
     return { name, typologies, subject, description, state, date, body };
 }
 const rows = [
-    createTemplate('Consultas pqr', 'PRQS', 'Peticiónes', 'Descripción...', 'borrador', '2 Ene. 2021' , 'este es un body'),
-    createTemplate('Solicitudes de info', 'Solicitud de información', 'Solicitudes', 'Descripción...', 'unico','22 Dic. 2020', 'este es un body'),
-    createTemplate('Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020',  'este es un body'),
-    createTemplate('Tutelas', 'Autorización', 'Proceso de autorización', ' Descripción...', 'variante','15 Nov. 2020', 'este es un body'),
-    createTemplate('En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'unico','15 Nov. 2020', 'este es un body'),
-    createTemplate('certificados', 'Certificados', 'Autoridad', 'Descripción...', 'borrador','20 Dic. 2020', 'este es un body'),
-    createTemplate('Desarrollo funcionalidad', 'Autorización', 'Proceso de autorización', ' Descripción...', 'unico','15 Nov. 2020', 'este es un body'),
-    createTemplate('Navidades', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'Borrador','15 Nov. 2020', 'este es un body'),
-    createTemplate('Aniversario', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020', 'este es un body'),
-    createTemplate('Promociones', 'Autorización', 'Proceso de autorización', ' Descripción...', 'borrador','15 Nov. 2020', 'este es un body'),
-    createTemplate('Pruebas', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'variante','15 Nov. 2020', 'este es un body'),
+    createTemplate('Consultas pqr', 'PRQS', 'Peticiónes', 'Descripción...', 'borrador', '2 Ene. 2021' , tutelas.body),
+    createTemplate('Solicitudes de info', 'Solicitud de información', 'Solicitudes', 'Descripción...', 'unico','22 Dic. 2020', tutelas.body),
+    createTemplate('Borrador certificados', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020',  tutelas.body),
+    createTemplate('Tutelas', 'Autorización', 'Tutela', ' Descripción...', 'variante','15 Nov. 2020', tutelas.body),
+    createTemplate('En proceso de aprovación', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'unico','15 Nov. 2020', tutelas.body),
+    createTemplate('certificados', 'Certificados', 'Autoridad', 'Descripción...', 'borrador','20 Dic. 2020', tutelas.body),
+    createTemplate('Desarrollo funcionalidad', 'Autorización', 'Proceso de autorización', ' Descripción...', 'unico','15 Nov. 2020', tutelas.body),
+    createTemplate('Navidades', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'Borrador','15 Nov. 2020', tutelas.body),
+    createTemplate('Aniversario', 'Certificados', 'Autoridad', 'Descripción...', 'variante','20 Dic. 2020', tutelas.body),
+    createTemplate('Promociones', 'Autorización', 'Proceso de autorización', ' Descripción...', 'borrador','15 Nov. 2020', tutelas.body),
+    createTemplate('Pruebas', 'Derechos de Petición', 'Servicio al cliente', 'Descripción...', 'variante','15 Nov. 2020', tutelas.body),
 ];
 
 

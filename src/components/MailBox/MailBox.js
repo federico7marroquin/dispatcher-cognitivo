@@ -25,6 +25,26 @@ import { CssButton } from './mailBoxStyles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+import {
+    fade,
+    ThemeProvider,
+    withStyles,
+    makeStyles,
+    createMuiTheme,
+  } from '@material-ui/core/styles';
+
+const BootstrapInput = withStyles((theme) => ({
+    input: {
+      fontSize: 13,
+      color: '#222222',
+      // Use the system font instead of the default Roboto font.
+      fontFamily: [
+        '"Helvetica"',
+        'Arial',
+        'sans-serif',
+      ].join(','),
+    },
+  }))(InputBase);
 
 export default function MailBox(props) {
     const { 
@@ -100,7 +120,7 @@ export default function MailBox(props) {
                 />
             </Box>
             <Box m={1}>
-                <InputBase
+                <BootstrapInput
                     // error={pushed&&bodyTemplate===''}
                     onChange={e => setBodyTemplate(e.target.value)}
                     value={bodyTemplate}
