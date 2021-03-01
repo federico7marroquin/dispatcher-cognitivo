@@ -52,7 +52,7 @@ export default function TypologyContainer(props) {
         setCategory(tempCategory);
     }
 
-    const { typologies } = props
+    const { typologies, setTypologies } = props
     return (
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />

@@ -31,30 +31,30 @@ import {
     withStyles,
     makeStyles,
     createMuiTheme,
-  } from '@material-ui/core/styles';
+} from '@material-ui/core/styles';
 
 const BootstrapInput = withStyles((theme) => ({
     input: {
-      fontSize: 13,
-      color: '#222222',
-      // Use the system font instead of the default Roboto font.
-      fontFamily: [
-        '"Helvetica"',
-        'Arial',
-        'sans-serif',
-      ].join(','),
+        fontSize: 13,
+        color: '#222222',
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            '"Helvetica"',
+            'Arial',
+            'sans-serif',
+        ].join(','),
     },
-  }))(InputBase);
+}))(InputBase);
 
 export default function MailBox(props) {
-    const { 
-        handleClicktypOpen, 
-        selectedTyp, 
-        setSelectedTyp, 
-        createTemplate, 
-        alreadyCreated, 
-        parentSubject, 
-        parentBody, 
+    const {
+        handleClicktypOpen,
+        selectedTyp,
+        setSelectedTyp,
+        createTemplate,
+        alreadyCreated,
+        parentSubject,
+        parentBody,
         template
     } = props;
     // const []
@@ -70,7 +70,7 @@ export default function MailBox(props) {
             setBodyTemplate('');
             setPushed(false);
         }
-        if(template && template.subject && template.body && template.typologies ){
+        if (template && template.subject && template.body && template.typologies) {
             setSubject(template.subject);
             setBodyTemplate(template.body);
             setSelectedTyp(template.typologies.split(', '))
@@ -138,13 +138,20 @@ export default function MailBox(props) {
                     <Box >
                         <Grid container alignItems='center' direction='row'>
                             <ButtonGroup variant="contained" color="secondary">
+                                { false  &&<Button
+                                    className='btn'
+                                    color='secondary'
+                                    onClick={handleSaveTamplate}
+                                >
+                                    Editar
+                                </Button>}
                                 <Button
                                     className='btn'
                                     color='secondary'
                                     onClick={handleSaveTamplate}
                                 >
                                     Crear
-                            </Button>
+                                </Button>
                                 <CssButton color='secondary'>
                                     <ArrowDropDownIcon />
                                 </CssButton>

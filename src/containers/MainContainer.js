@@ -94,7 +94,7 @@ const Escalationdata = [
 export default function MainContainer() {
     const [formatTime, setFormatTime] = useState(0);
     const [quantity, setQuantity] = useState(0);
-
+    const [types, setTypes] = useState(typologies)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const fromDate = new Date("11/1/2020").getTime();
     const toDate = new Date("11/25/2020").getTime();
@@ -195,12 +195,13 @@ export default function MainContainer() {
             </Route>
             <Route path="/templates">
                 <Templates
-                    typologies={typologies}
+                    typologies={types}
                 />
             </Route>
             <Route path="/typologies">
                 <Typology
-                    typologies={typologies}
+                    typologies={types}
+                    setTypologies ={setTypes}
                 />
             </Route>
             <Route path="/users">

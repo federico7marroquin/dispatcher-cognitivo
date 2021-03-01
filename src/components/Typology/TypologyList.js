@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Card from '@material-ui/core/Card';
@@ -30,10 +30,31 @@ function union(a, b) {
     return [...a, ...not(b, a)];
 }
 
+// const typologies = [
+//     createTypology('Solicitud de Información', 'Primer nivel', 'Información sobre productos'),
+//     createTypology('Peticiones, Quejas y Reclamos', 'Primer nivel', 'PQRs'),
+//     createTypology('Certificados', 'Primer nivel', ''),
+//     createTypology('Servicio al Cliente',  'Primer nivel', 'Respuesta automática'),
+
+//     createTypology('Asuntos Legales', 'Escalados', 'Consecuencias legales'),
+//     createTypology('Autorizaciones',  'Escalados', ''),
+//     createTypology('Derechos de Peticiones',  'Escalados', 'Consecuencias legales'),
+//     createTypology('Casos sin tipificar',  'Escalados', 'necesitan ser estudiados'),
+    
+//     createTypology('Atención Prioritaria',  'Prioritarios', 'Consecuencias legales'),
+//     createTypology('Demandas', 'Prioritarios', 'Escalan al area de Asuntos legales'),
+//     createTypology('Tutelas',  'Prioritarios', 'Escalan al area legal'),
+//     createTypology('Soporte técnico',  'Prioritarios', 'Soporte técnico para clientes'),   
+// ]
+
+function createTypology(name, category, description){
+    return { name, category, description };
+}
+
 export default function TypologyList(props) {
     const classes = useStyles();
     const [checked, setChecked] = useState([]);
-    const [left, setLeft] = useState([0, 1, 2, 3]);
+    const [left, setLeft] = useState( [0, 1, 2, 3]);
     const [middle, setMiddle] = useState([9, 10, 11, 12]);
     const [right, setRight] = useState([4, 5, 6, 7]);
     const { typologies, handleOpenDialog, setItem } = props
@@ -41,6 +62,8 @@ export default function TypologyList(props) {
     const leftChecked = intersection(checked, left);
     const middleChecked = intersection(checked, middle);
     const rightChecked = intersection(checked, right);
+
+ 
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);

@@ -10,6 +10,7 @@ import Table from '../../components/Table/GenericTable';
 import FormDialog from '../../components/FormDialog/FormDialog';
 import TemplateDialog from '../../components/TemplateDialog/TemplateDialog';
 import { tutelas } from '../../config/templates';
+
 const headCells = [
     { id: 'name', disablePadding: true, label: 'Nombre ' },
     { id: 'typologies', disablePadding: false, label: 'Tipología' },
@@ -84,7 +85,7 @@ export default function TemplatesContainer(props) {
         // setSubject(item)
         // setBody(item.body)
         // setSelectedTyp(item.typologies)
-        // console.log('item', item);
+        console.log('item', item);
         setTemplate(item);
         executeScroll();
         
@@ -95,12 +96,16 @@ export default function TemplatesContainer(props) {
         const year = new Intl.DateTimeFormat('es', {year: 'numeric' }).format(date);
         const month = new Intl.DateTimeFormat('es', {month: 'short' }).format(date);
         const day = new Intl.DateTimeFormat('es', {day: '2-digit' }).format(date);
-        const template = makeTemplate(name, rules, subject, description, 'Borrador',` ${day} ${month} ${year}`, body );
+        const newTemplate = makeTemplate(name, template?.typologies , template?.subject, description, 'Borrador',` ${day} ${month} ${year}`, template?.body );
         setSubject('');
         setBody('');
         setRules('')
         setAlreadyCreated(true);
-        rows.push(template);
+        rows.push(newTemplate);
+    }
+
+    const edit = () => {
+        
     }
 
 
