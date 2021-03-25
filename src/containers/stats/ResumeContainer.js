@@ -28,7 +28,7 @@ export default function ResumeContainer(props) {
                         <Paper className={fixedHeightPaper}>
                             <Stats
                                 title="Correos Mes Anterior"
-                                date="Noviembre 2020"
+                                date="Febrero 2020"
                                 quantity={14963}
                                 time='12 Horas con 34 Minutos y 43 Segundos'
                                 route="/escalation" />

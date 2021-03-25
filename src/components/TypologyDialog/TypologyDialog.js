@@ -25,7 +25,7 @@ import Typography from '@material-ui/core/Typography';
 import ComposedIcon from '../ComposedIcon/ComposedIcon';
 
 const typeInfo = 'Nombre de tipología';
-const categoryInfo = 'tipo de resolución, Primer nivel, escalados y escalados prioritarios.';
+const categoryInfo = 'tipo de resolución, Primer nivel, escalados y Asistidos.';
 const descripInfo = 'Descripción de la tipología. Opcional'
 TypologyDialog.propTypes = {
     title: propTypes.string,

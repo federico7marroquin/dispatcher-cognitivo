@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const data = [
   {
-    name: 'Derechos de Petición',
+    name: 'Conceptos puntuales',
     children: [
       { name: 'Axes', size: 1302 },
       { name: 'Axis', size: 24593 },
@@ -16,7 +16,7 @@ const data = [
     ],
   },
   {
-    name: 'Asuntos Legales',
+    name: 'Outsourcing Tributario',
     children: [
       { name: 'AnchorControl', size: 2138 },
       { name: 'ClickControl', size: 3824 },
@@ -32,7 +32,7 @@ const data = [
     ],
   },
   {
-    name: 'PQRS',
+    name: 'Conceptos DIAN',
     children: [
       { name: 'Data', size: 20544 },
       { name: 'DataList', size: 19788 },
@@ -54,7 +54,7 @@ const data = [
     ],
   },
   {
-    name: 'Autorizaciones',
+    name: 'Litigios',
     children: [
       { name: 'DataEvent', size: 7313 },
       { name: 'SelectionEvent', size: 6880 },
@@ -63,7 +63,7 @@ const data = [
     ],
   },
   {
-    name: 'Certificados',
+    name: 'Peticiones',
     children: [
       { name: 'Legend', size: 20859 },
       { name: 'LegendItem', size: 4614 },
@@ -71,7 +71,7 @@ const data = [
     ],
   },
   {
-    name: 'Solicitud de Información',
+    name: 'Estatuto Tributario',
     children: [
       {
         name: 'distortion',

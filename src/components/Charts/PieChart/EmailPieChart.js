@@ -9,7 +9,7 @@ import { useStyles } from './PieStyles';
 const data = [
   { name: 'Primer nivel', value: 7336 },
   { name: 'Escalados', value: 3911 },
-  { name: 'Prioritarios', value: 3716 },
+  { name: 'Asistidos', value: 3716 },
 
 ];
 

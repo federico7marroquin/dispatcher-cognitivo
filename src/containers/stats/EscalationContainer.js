@@ -27,7 +27,7 @@ export default function EscalationContainer(props) {
     const escalationDate = new Date();
     escalationDate.setMonth(escalationDate.getMonth()-1);
     //default time
-    const [date, setDate] = useState('Noviembre 2020');
+    const [date, setDate] = useState('Marzo 2020');
     const [datePicker, setDatePicker] = useState(escalationDate);
 
     //--emails
@@ -146,7 +146,7 @@ export default function EscalationContainer(props) {
                      <Grid item xs={12} md={3} lg={3}>
                         <Paper className={fixedHeightPaper}>
                             <Stats 
-                                title="Prioritarios" 
+                                title="Asistidos" 
                                 date={date} 
                                 quantity={priorScaled}
                                 time={priorScaledTime}

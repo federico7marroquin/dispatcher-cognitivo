@@ -34,7 +34,7 @@ export default class BrushBarChart extends PureComponent {
                   <Brush dataKey="name" height={30} stroke="#8884d8" onChange={filterValues}/>
                   <Bar name="Resolución en primer nivel" dataKey="pv" fill="#8884d8" />
                   <Bar name="Escalados" dataKey="uv" fill="#82ca9d" />
-                  <Bar name="Prioritarios" dataKey="amt" fill="#ffc658" />
+                  <Bar name="Asistidos" dataKey="amt" fill="#ffc658" />
               </BarChart>
             </ResponsiveContainer>
         </React.Fragment>

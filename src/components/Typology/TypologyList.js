@@ -1,21 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import AddIcon from '@material-ui/icons/Add';
+import React, {useState, useEffect} from 'react'
 
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import IconButton from '@material-ui/core/IconButton'
+import CardHeader from '@material-ui/core/CardHeader'
+import Checkbox from '@material-ui/core/Checkbox'
+import ListItem from '@material-ui/core/ListItem'
+import Divider from '@material-ui/core/Divider'
+import Tooltip from '@material-ui/core/Tooltip'
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import Grid from '@material-ui/core/Grid'
+import List from '@material-ui/core/List'
 
-import { useStyles } from './TypologyStyles';
+import EditIcon from '@material-ui/icons/Edit'
+import AddIcon from '@material-ui/icons/Add'
+
+import { useStyles } from './TypologyStyles'
 
 
 function not(a, b) {
@@ -30,33 +31,12 @@ function union(a, b) {
     return [...a, ...not(b, a)];
 }
 
-// const typologies = [
-//     createTypology('Solicitud de Información', 'Primer nivel', 'Información sobre productos'),
-//     createTypology('Peticiones, Quejas y Reclamos', 'Primer nivel', 'PQRs'),
-//     createTypology('Certificados', 'Primer nivel', ''),
-//     createTypology('Servicio al Cliente',  'Primer nivel', 'Respuesta automática'),
-
-//     createTypology('Asuntos Legales', 'Escalados', 'Consecuencias legales'),
-//     createTypology('Autorizaciones',  'Escalados', ''),
-//     createTypology('Derechos de Peticiones',  'Escalados', 'Consecuencias legales'),
-//     createTypology('Casos sin tipificar',  'Escalados', 'necesitan ser estudiados'),
-    
-//     createTypology('Atención Prioritaria',  'Prioritarios', 'Consecuencias legales'),
-//     createTypology('Demandas', 'Prioritarios', 'Escalan al area de Asuntos legales'),
-//     createTypology('Tutelas',  'Prioritarios', 'Escalan al area legal'),
-//     createTypology('Soporte técnico',  'Prioritarios', 'Soporte técnico para clientes'),   
-// ]
-
-function createTypology(name, category, description){
-    return { name, category, description };
-}
-
 export default function TypologyList(props) {
     const classes = useStyles();
     const [checked, setChecked] = useState([]);
-    const [left, setLeft] = useState( [0, 1, 2, 3]);
-    const [middle, setMiddle] = useState([9, 10, 11, 12]);
-    const [right, setRight] = useState([4, 5, 6, 7]);
+    const [left, setLeft] = useState( [0, 1, 2, 3, 4]);
+    const [middle, setMiddle] = useState([6, 7, 8, 9, 10, 11]);
+    const [right, setRight] = useState([5]);
     const { typologies, handleOpenDialog, setItem } = props
 
     const leftChecked = intersection(checked, left);
@@ -113,7 +93,7 @@ export default function TypologyList(props) {
     }
 
     const customList = (title, items) => (
-        <Card>
+        <Card className={classes.vhHeight} >
             <CardHeader
                 className={classes.cardHeader}
                 avatar={
@@ -162,8 +142,8 @@ export default function TypologyList(props) {
                 })}
                 <ListItem />
             </List>
-            {/* <Divider /> */}
-            <Grid container alignItems='center' justify="center">
+            <Grid className={classes.buttonAddContainer} container alignItems='center' justify="center">
+                <Divider style={{color: 'green'}}/>
                 <Button
                     className={classes.buttonAdd}
                     variant="contained"
@@ -178,7 +158,7 @@ export default function TypologyList(props) {
 
     return (
         <>
-            <Grid item sm={12} md={3} style={{width: '100%'}}>
+            <Grid item sm={12} md={3}>
                 {customList('Primer nivel', left)}
             </Grid>
 
@@ -241,7 +221,7 @@ export default function TypologyList(props) {
             </Grid>
 
             <Grid item xs={12} md={3}>
-                {customList('Prioritarios', middle)}
+                {customList('Asistidos', middle)}
             </Grid>
         </>
     );

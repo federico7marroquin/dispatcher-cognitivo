@@ -23,20 +23,20 @@ export default function TMOContainer(props) {
     const {data} = props;
 
     const onClick = (payload) =>{
-        if(payload.name ==='Prioritarios'){
+        if(payload.name ==='Asistidos'){
             setTotal({title: 'Total ' + payload.name, quantity:  payload.pqrs + payload.asun, time: '36 Horas con 17 Minutos y 33 Segundos'});
-            setType1({title: 'PQRS', quantity:  payload.pqrs, time: '28 Horas con 20 Minutos y 2 segundos' });
-            setType2({title: 'Asuntos Legales', quantity:  payload.asun, time: '44 Horas con 15 Minutos y 24 Segundos' });
+            setType1({title: 'Preparación contratos', quantity:  payload.pqrs, time: '28 Horas con 20 Minutos y 2 segundos' });
+            setType2({title: 'Litigios', quantity:  payload.asun, time: '44 Horas con 15 Minutos y 24 Segundos' });
         }
         else if(payload.name ==='Escalados' ){
             setTotal({title:  'Total ' + payload.name, quantity:  payload.cert + payload.auto, time: '1 Hora con 26 Minutos y 6 Segundos'});
-            setType1({title: 'Autorizaciones', quantity:  payload.cert, time: '50 Minutos y 35 Segundos' });
-            setType2({title: 'Certificados', quantity:  payload.auto, time: '1 Hora con 11 Minutos y 24 Segundos' });
+            setType1({title: 'Outsourcing Tributario', quantity:  payload.cert, time: '50 Minutos y 35 Segundos' });
+            setType2({title: 'Conceptos puntuales', quantity:  payload.auto, time: '1 Hora con 11 Minutos y 24 Segundos' });
         }
         else {
             setTotal({title: 'Total ' +  payload.name, quantity:  payload.info + payload.otros, time: '31 Segundos'});
-            setType1({title: 'Solicitud de Información', quantity:  payload.info, time: '26 Segundos' });
-            setType2({title: 'Otros', quantity:  payload.otros, time: '35 Segundos' });
+            setType1({title: 'Estatuto Tributario', quantity:  payload.info, time: '26 Segundos' });
+            setType2({title: 'Conceptos DIAN', quantity:  payload.otros, time: '35 Segundos' });
             
         }
     }
@@ -51,7 +51,7 @@ export default function TMOContainer(props) {
                         <Paper className={fixedHeightPaper}>
                             <Stats 
                                 title={type1?.title??"Resolución en Primer Nivel"} 
-                                date="Noviembre 2020" 
+                                date="Marzo 2020" 
                                 quantity={type1?.quantity??"7336" }
                                 time={type1?.time??"31 Segundos"} 
                                 route={false}
@@ -63,7 +63,7 @@ export default function TMOContainer(props) {
                         <Paper className={fixedHeightPaper}>
                             <Stats 
                                 title={type2?.title??"Escalados"} 
-                                date="Noviembre 2020" 
+                                date="Marzo 2020" 
                                 quantity={type2?.quantity??"3911" }
                                 time={type2?.time??"1 Hora con 26 Minutos y 6 Segundos"} 
                                 route={false}
@@ -74,8 +74,8 @@ export default function TMOContainer(props) {
                      <Grid item xs={12} md={4} lg={4}>
                         <Paper className={fixedHeightPaper}>
                             <Stats 
-                                title={total?.title??"Prioritarios" }
-                                date="Noviembre 2020"
+                                title={total?.title??"Asistidos" }
+                                date="Marzo 2020"
                                 quantity={total?.quantity??3716}
                                 time={total?.time??'36 Horas con 17 Minutos y 33 Segundos'}
                                 route={false}
@@ -93,13 +93,13 @@ export default function TMOContainer(props) {
                                 <Grid item xs={6} md={2} lg={2} >
                                     <FullDatePicker 
                                         helperText='Fecha Inicial'
-                                        date={new Date('11/01/2020')}
+                                        date={new Date('3/01/2021')}
                                         />
                                 </Grid>
                                 <Grid item xs={6} md={2} lg={2} >
                                     <FullDatePicker 
                                         helperText='Fecha Final'
-                                        date={new Date('11/30/2020')}
+                                        date={new Date('3/23/2021')}
                                         />
                                 </Grid>
                             </Grid>

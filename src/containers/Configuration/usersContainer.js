@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { useStyles } from '../../styles/styles';
 
 import Copyright from '../../components/Copyright/Copyright';
+
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+
+import UserDialog from '../../components/UserDialog/UserDialog';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Table from '../../components/Table/GenericTable';
 
-import UserDialog from '../../components/UserDialog/UserDialog';
 
 const headCells = [
     { id: 'name', disablePadding: true, label: 'Nombre' },

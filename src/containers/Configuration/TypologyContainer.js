@@ -56,9 +56,8 @@ export default function TypologyContainer(props) {
     return (
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
-            <Container maxWidth='lg' className={classes.container}>
+            <Container maxWidth='lg' className={classes.container} >
                 <Grid
-
                     justify="space-around"
                     alignItems="center"
                     className={classes.depositContext}
@@ -70,9 +69,6 @@ export default function TypologyContainer(props) {
                         typologies={typologies}
                     />
                 </Grid>
-                {/* <Box pt={4}>
-                    <Copyright />
-                </Box> */}
             </Container>
             <TypologyDialog
                 open={openDialog}

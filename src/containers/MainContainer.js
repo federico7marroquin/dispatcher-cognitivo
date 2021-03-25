@@ -19,7 +19,7 @@ const TMOData = [
         name: 'Escalados',  cert: 2933, auto: 977
     },
     {
-        name: 'Prioritarios',  pqrs: 2476, asun: 1238
+        name: 'Asistidos',  pqrs: 2476, asun: 1238
     },
 
 ];
@@ -76,19 +76,18 @@ const Escalationdata = [
   ];
 
   const typologies = [
-    'Solicitud de Información',
-    'Peticiones, Quejas y Reclamos',
-    'Asuntos Legales',
-    'Demandas',
-    'Certificados',
-    'Autorizaciones', 
-    'Derechos de Peticiones', 
-    'Atención Prioritaria', 
-    'Tutelas', 
-    'Servicio al Cliente', 
-    'Casos sin tipificar', 
-    'Soporte técnico', 
-    'Ventas', 
+    'Calendario Tributario',
+    'Estatuto Tributario',
+    'Conceptos DIAN',
+    'Sentencias Consejo de Estado',
+    'Conceptos rutinarios preestablecidos',
+    'Conceptos puntuales', 
+    'Preparación planeación tributaria', 
+    'Preparación contratos', 
+    'Litigios', 
+    'Estudios de Precios de Transferencia', 
+    'Preparación declaraciones de renta', 
+    'Outsourcing Tributario', 
 ]
 
 export default function MainContainer() {
@@ -96,8 +95,8 @@ export default function MainContainer() {
     const [quantity, setQuantity] = useState(0);
     const [types, setTypes] = useState(typologies)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const fromDate = new Date("11/1/2020").getTime();
-    const toDate = new Date("11/25/2020").getTime();
+    const fromDate = new Date("3/1/2021").getTime();
+    const toDate = new Date("3/25/2021").getTime();
     const today = new Date();
 
 

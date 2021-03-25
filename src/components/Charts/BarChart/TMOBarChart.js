@@ -26,12 +26,12 @@ export default class TMOBarChart extends PureComponent {
                     <YAxis />
                     <Tooltip />
                     <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }}/>
-                    <Bar onClick={handleClick} name="Solicitud de Información" dataKey="info" fill="#8884d8" />
-                    <Bar onClick={handleClick} name="Otros" dataKey="otros" fill="#609" />
-                    <Bar onClick={handleClick} name="Certificados" dataKey="cert" fill="#82ca9d" />
-                    <Bar onClick={handleClick} name="Autorizaciones" dataKey="auto" fill="#0088fe" />
-                    <Bar onClick={handleClick} name="Asuntos Legales" dataKey="asun" fill="#00C49F" />
-                    <Bar onClick={handleClick} name="PQRS" dataKey="pqrs" fill="#ffc658" />
+                    <Bar onClick={handleClick} name="Estatuto Tributario" dataKey="info" fill="#8884d8" />
+                    <Bar onClick={handleClick} name="Conceptos DIAN" dataKey="otros" fill="#609" />
+                    <Bar onClick={handleClick} name="Conceptos puntuales" dataKey="cert" fill="#82ca9d" />
+                    <Bar onClick={handleClick} name="Outsourcing Tributario" dataKey="auto" fill="#0088fe" />
+                    <Bar onClick={handleClick} name="Litigios" dataKey="asun" fill="#00C49F" />
+                    <Bar onClick={handleClick} name="Preparación contratos" dataKey="pqrs" fill="#ffc658" />
 
 
                 </BarChart>
